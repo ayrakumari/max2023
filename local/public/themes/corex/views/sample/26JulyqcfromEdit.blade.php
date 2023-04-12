@@ -1,0 +1,1043 @@
+<!-- main  -->
+<div class="m-content">
+   <!-- datalist -->
+   <div class="m-portlet m-portlet--mobile">
+      <div class="m-portlet__head">
+         <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+               <h3 class="m-portlet__head-text">
+                  Order  Edit Form
+               </h3>
+            </div>
+         </div>
+         <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                  <li class="m-portlet__nav-item">
+                        <a href="javascript::void(0)"  id="btnNewOrder" class="btn btn-primary m-btn m-btn--custom m-btn--icon">
+                        <span>
+                        <i class="la la-plus"></i>
+                        <span>Edit  ORDER </span>
+                        </span>
+                        </a>
+                     </li>
+
+               <li class="m-portlet__nav-item">
+               <a href="{{ route('qcform.list')}}" class="btn btn-secondary m-btn m-btn--custom m-btn--icon">
+                  <span>
+                  <i class="la la-arrow-left"></i>
+                  <span>Orders List </span>
+                  </span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <?php 
+      $order_arr=AyraHelp::getOrderCODE();     
+      $order_arrIndex=AyraHelp::getOrderCODEIndex();
+      $frsh="fresh";
+      ?>
+      <style>
+         .bulkOrderArea{
+            display:none;
+         }
+      </style>
+      
+      <div class="m-portlet__body">
+
+
+          <!-- form  -->
+                  <!--begin::Form-->
+                  <form class="m-form m-form--state m-form--fit m-form--label-align-right" id="m_form_updateQCUPdateForm" method="post" action="{{ route('updateQCdataNewWays')}}">
+                        @csrf
+                        <div class="m-portlet__body">
+                          <div class="m-form__section m-form__section--first">
+                            <div class="form-group m-form__group row">
+                              <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label">* Vendor Name:</label>
+                                <input type="text" class="form-control m-input" name="vendor_name" placeholder="Enter Vender Name">
+                            </div>
+                              <div class="col-lg-4 m-form__group-sub">
+                                <label class="form-control-label">Branch:</label>
+                                <input type="text" class="form-control m-input" name="vendor_branch" placeholder="Enter Branch">
+                             </div>
+                            
+                             </div>
+                           </div>
+                           <!-- name email phone -->
+                           <div class="m-form__section m-form__section--first">
+                             <div class="form-group m-form__group row">
+                               <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label">* Name:</label>
+                                   <input type="text" class="form-control m-input" name="name" placeholder="Enter Name" >
+                               </div>
+                               <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label">*Phone:</label>
+                                 <input type="text" class="form-control m-input" name="phone" placeholder="Enter Phone" >
+                               </div>
+                               <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label"> Email:</label>
+                                 <input type="text" class="form-control m-input" name="email" placeholder="Enter Email">
+                               </div>
+                             </div>
+                           </div>
+                           <!-- name email phone -->
+                           <!-- <address location source>
+
+                           </address> email phone -->
+                           <div class="m-form__section m-form__section--first">
+                             <div class="form-group m-form__group row">
+                               <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label"> Address:</label>
+                                   <input type="text" class="form-control m-input" name="address" placeholder="Enter Address" >
+                               </div>
+                               <div class="col-lg-4 m-form__group-sub">
+                                 <label class="form-control-label">Location:</label>
+                                 <input type="text" class="form-control m-input" name="location" placeholder="Enter Location" >
+                               </div>
+                               
+                             </div>
+                           </div>
+                        <!-- <address location source-->
+                        <!-- website and remarks -->
+                        <div class="m-form__section m-form__section--first">
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-4 m-form__group-sub">
+                              <label class="form-control-label"> Website:</label>
+                                <input type="text" class="form-control m-input" name="website" placeholder="Enter Website" >
+                            </div>
+                            <div class="col-lg-8 m-form__group-sub">
+                              <label class="form-control-label">Remarks:</label>
+                              <input type="text" class="form-control m-input" name="remarks" placeholder="Enter Remarks" >
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <!-- website and remarks -->
+
+
+
+                         </div>
+                         <div class="m-portlet__foot m-portlet__foot--fit">
+                           <div class="m-form__actions m-form__actions">
+                             <div class="row">
+                               <div class="col-lg-12">
+                                 <button type="submit" data-wizard-action="submit" class="btn btn-primary">Save</button>
+                                 <button type="reset" class="btn btn-secondary">Reset</button>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </form>
+
+                       <!--end::Form-->
+
+     <!-- form  -->
+
+
+         <div class="tab-pane active" id="m_tabs_3_1" role="tabpanel">          
+            <form class="m-form m-form--state m-form--fit m-form--label-align-right"   id="m_form_edit_qcform" method="post" action="{{ route('updateQCdataNewWays')}}">
+               
+                  
+
+               @csrf
+                <input type="hidden" name="formID" value="{{ $qc_form->form_id }}">
+
+               <div class="m-portlet__body">
+                  <div class="m-form__section m-form__section--first">
+                     <div class="form-group m-form__group row">
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label">* Order No:</label>
+                           <input type="text" readonly class="form-control m-input" value="{{  $qc_form->order_id}}/{{  $qc_form->subOrder}}" name="order_id">
+                        </div>
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label class="form-control-label">Select Client:</label>
+                           <select class="form-control m-select2 client_name_qcform" id="m_select2_1" name="client_id">
+                            
+                              <?php 
+                               foreach (AyraHelp::getClientByadded(Auth::user()->id) as $key => $user) {
+                                
+                                  if($qc_form->client_id==$user->id){
+                                    
+                                    ?>
+                                    <option selected value="{{$user->id}}">{{$user->firstname}} | {{$user->phone}}  | {{$user->email}}</option>
+
+                                <?php
+                                  }else{
+                                    ?>
+                                    <option value="{{$user->id}}">{{$user->firstname}} | {{$user->phone}}  | {{$user->email}}</option>
+
+                                <?php
+                                  }
+                               
+                               }
+                              ?>
+                           </select>
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label">TARGET :</label>                           
+                           <div class="input-group">
+                              <input type="text" name="due_date" value="{{ date("Y-m-d", strtotime($qc_form->due_date))}}" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+                           </div>
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label">COMMITTED :</label>                           
+                           <div class="input-group">
+                              <input type="text" name="due_date" value="{{ date("Y-m-d", strtotime($qc_form->due_date))}}" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+                           </div>
+                        </div>
+                        <div class="col-lg-3 m-form__group-sub">
+                           <div class="m-form__group form-group">
+                              <label for="">Order Type</label>
+                              <div class="m-checkbox-inline">
+                                 <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-primary">
+                                    <input type="radio" <?php echo $qc_form->order_type=='Private Label' ? 'checked':'' ?> value="1" name="order_type" > Private Label
+                                    <span></span>
+                                 </label>
+                                 <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-primary">
+                                    <input type="radio" <?php echo $qc_form->order_type=='Bulk' ? 'checked':'' ?> value="2" id="order_type" name="order_type"> Bulk
+                                    <span></span>
+                                 </label>
+                                 
+                              </div>
+                              
+                           </div>
+
+
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m-form__section m-form__section--first">
+                     <div class="form-group m-form__group row">
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label class="form-control-label"> Brand:</label>
+                         <input type="text" value="{{$qc_form->brand_name}}" class="form-control m-input" id="client_address" name="brand" placeholder="" >
+                        </div>
+                       
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label>Repeat Order:</label>
+                           <div class="m-radio-inline">
+                              <label class="m-radio m-radio">
+                              <input type="radio" <?php echo $qc_form->order_repeat=='2' ? 'checked':'' ?>  name="order_repeat"  value="2"> YES
+                              <span></span>
+                              </label>
+                              <label class="m-radio m-radio">
+                              <input type="radio" <?php echo $qc_form->order_repeat=='1' ? 'checked':'' ?> name="order_repeat"   value="1"> NO
+                              <span></span>
+                              </label>
+                           </div>
+                        </div>
+                        
+                        <?php
+                        if($qc_form->order_repeat=='2'){
+                            $ajstyle="";
+                        }else{
+                              $ajstyle="ajorderhide";
+                        }
+                       
+                        ?>
+                        <div class="col-lg-2 m-form__group-sub <?php echo $ajstyle ?>">
+                           <label class="form-control-label">Prev. Order NO.:</label>
+                        <input type="text" class="form-control m-input" name="pre_orderno" placeholder="Previoud Order No" value="{{$qc_form->pre_order_id}}">
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub ">
+                              <label class="form-control-label">Currency:</label>
+                              <?php
+                        if(strtoupper($qc_form->order_currency)=="USD"){
+                            $ajstyleorder="display:block";
+                        }else{
+                           $ajstyleorder="display:none";
+                        }
+                       
+                        ?>
+                              
+                              <select class="form-control currency_order" name="currency" id="currency">
+                                 
+                                 <?php 
+                              if(strtoupper($qc_form->order_currency)=="INR"){
+                                 ?>
+                                 <option  value="INR" selected>INR</option>
+                                 <option  value="USD" >USD</option>
+                                 <?php
+                                 
+
+                              }else{
+                                 ?>
+                                 <option  value="USD" selected>USD</option>
+                                 <option  value="INR">INR</option>
+                                 <?php
+                              }
+                              ?>
+
+                              </select>
+                              
+                           </div>
+                           <div class="col-lg-2 m-form__group-sub ajorderhiderate" style="<?php echo $ajstyleorder ?>">
+                                 <label class="form-control-label">Conversion Rate:</label>
+                           <input type="text" style="background:burlywood; border:1px solid #035496" class="form-control m-input" name="conv_rate" value="{{ $qc_form->exchange_rate }}" placeholder="" >
+                           </div>
+                     </div>
+                     
+                  </div>
+                  
+                 
+                      <input type="hidden"  id="editOrderNewWay" value="<?php echo $qc_form->order_type ?>">
+                      
+                         <div class="bulkOrderArea" >
+                            <?php 
+                          
+
+                            $bulk_data=AyraHelp::getBULKData($qc_form->form_id);
+                           
+                           
+
+                              ?>
+                        {{-- Welcome bulk order  --}}
+                        <div class="m-form__section m-form__section--first">                     
+                              {{-- form repqter --}}                           
+                              <div id="m_repeater_1">
+                                 <div class="form-group   row" id="m_repeater_1">
+                                    <div data-repeater-list="qcBulkOrder" class="qc_from">
+                                          <?php 
+                                           foreach ($bulk_data as $key => $bomROW) {
+                                               // print_r($bomROW);
+                                                ?>
+                                                <div data-repeater-item class="form-group  row align-items-center" style="margin-left: 29px;">
+                                                      <div class="col-md-3">                                    
+                                                      <input type="text" name="bulk_material_name" class="form-control m-input"  value ="{{$bomROW->item_name}}" placeholder="Material Name">
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                      <div class="col-md-2">                                            
+                                                         <input type="text" name="bulkItem_qty" value ="{{$bomROW->qty}}" class="form-control m-input" placeholder="Quantity">
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                      <div class="col-md-2" style="width: 70px;">                                            
+                                                            <select name="bulk_sizeUnit" id="bulk_sizeUnit" class="form-control m-input item_size_unitBULK">
+                                                                  <option value="L">L</option>
+                                                                  <option value="Kg">Kg</option>
+                                                            </select>
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                      <div class="col-md-2">                                            
+                                                         <input type="number" name="bulk_rate" value ="{{$bomROW->rate}}" class="form-control m-input" placeholder="Rate">
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                      <div class="col-md-2">                                            
+                                                         <input type="text" name="bulk_packing" value ="{{$bomROW->packing}}" class="form-control m-input" placeholder="Packing">
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                     
+                                                      <div class="col-md-1">
+                                                         <div data-repeater-delete=""  style="margin-bottom: 16px;margin-left: -27px;" class="btn-sm btn btn-danger m-btn m-btn--icon m-btn--pill">
+                                                            <span>
+                                                            <i class="la la-trash-o"></i>
+                                                            <span>Del</span>
+                                                            </span>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+
+                                                <?php
+                                          }
+
+                                          ?>
+
+<div data-repeater-item class="form-group  row align-items-center" style="margin-left: 29px;">
+      <div class="col-md-3">                                    
+      <input type="text" name="bulk_material_name" class="form-control m-input"   placeholder="Material Name">
+         <span class="m-form__help"></span>
+      </div>
+      <div class="col-md-2">                                            
+         <input type="text" name="bulkItem_qty" class="form-control m-input" placeholder="Quantity">
+         <span class="m-form__help"></span>
+      </div>
+      <div class="col-md-2" style="width: 70px;">                                            
+            <select name="bulk_sizeUnit" id="bulk_sizeUnit" class="form-control m-input item_size_unitBULK">
+                  <option value="L">L</option>
+                  <option value="Kg">Kg</option>
+            </select>
+         <span class="m-form__help"></span>
+      </div>
+      <div class="col-md-2">                                            
+         <input type="number" name="bulk_rate" class="form-control m-input" placeholder="Rate">
+         <span class="m-form__help"></span>
+      </div>
+      <div class="col-md-2">                                            
+         <input type="text" name="bulk_packing"  class="form-control m-input" placeholder="Packing">
+         <span class="m-form__help"></span>
+      </div>
+     
+      <div class="col-md-1">
+         <div data-repeater-delete=""  style="margin-bottom: 16px;margin-left: -27px;" class="btn-sm btn btn-danger m-btn m-btn--icon m-btn--pill">
+            <span>
+            <i class="la la-trash-o"></i>
+            <span>Del</span>
+            </span>
+         </div>
+      </div>
+   </div>
+                                          
+
+                                             
+         
+                                    </div>
+                                 </div>                           
+                                 
+                                
+         
+                                 <div class="m-form__group form-group row">
+                                    <label class="col-lg-2 col-form-label"></label>
+                                    <div class="col-lg-4">
+                                       <div data-repeater-create="" class="btn btn btn-sm btn-brand m-btn m-btn--icon m-btn--pill m-btn--wide">
+                                          <span>
+                                          <i class="la la-plus"></i>
+                                          <span>Add</span>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <br>
+         
+         
+                              </div>
+                              {{-- form repqter --}}
+                           </div>
+                     
+                                    <!--begin::Preview-->
+												<div class="m-demo ">
+                                       <div class="m-demo__preview">
+                                          <div class="m-list-search">
+                                             <div class="m-list-search__results">                                              
+                                                <span style="color:#035496" class="m-list-search__result-category m-list-search__result-category--first">
+                                                   Production Remarks
+                                                </span>
+                                                {{-- tag --}}
+                                                <div class="row">
+                                                   <div class="col-md-12">
+                                                      <textarea name="production_rmk_bulk" class="form-control" id="" cols="1" rows="2">{{$qc_form->production_rmk}}</textarea>
+                                                   </div>                                                                                                        
+                                                </div>
+                                                {{-- tag --}}
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Preview-->
+                                     <!--begin::Preview-->
+												<div class="m-demo ">
+                                       <div class="m-demo__preview">
+                                          <div class="m-list-search">
+                                             <div class="m-list-search__results">                                              
+                                                <span style="color:#035496" class="m-list-search__result-category m-list-search__result-category--first">
+                                                   PACKAGING Remarks
+                                                </span>
+                                                {{-- tag --}}
+                                                <div class="row">
+                                                   <div class="col-md-12">
+                                                      <textarea name="packeging_rmk_bulk" class="form-control" id="" cols="1" rows="2">{{$qc_form->packeging_rmk}}</textarea>
+                                                   </div>                                                                                                        
+                                                </div>
+                                                {{-- tag --}}
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Preview-->
+
+                           
+                        {{-- Welcome bulk order  --}}
+                  </div>
+                  <div class="PrivateOrder">
+
+
+                  <div id="formLayoutAJITEMS">
+                        <table class="table m-table m-table--head-bg-brand ajitemTable">
+                              <thead>
+                                 <tr>
+                                    <th>#</th>
+                                    <th>Item Name</th>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+                                    <th>FM No./Sample No:</th>
+                                 </tr>
+                              </thead>
+                              <tbody id="showitemLayout">
+                                 
+                                
+                              </tbody>
+                           </table>
+                           <hr>
+                  </div>
+                  
+                  <div id="formLayoutAJ">
+                  <div class="m-form__section m-form__section--first">
+                     <div class="form-group m-form__group row">
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label class="form-control-label"> Item Name:</label>
+                           <input type="text" value="{{$qc_form->item_name}}" class="form-control m-input" id="item_name" name="item_name" placeholder="Enter Item Name" >
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label"> Size:</label>
+                           <input type="number" value="{{$qc_form->item_size}}" class="form-control m-input" id="item_size" name="item_size" placeholder="Size" >
+                          
+
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label">Size Unit</label>
+                           <?php 
+                           echo $qc_form->item_size_unit;
+                          ?>
+                          <select name="item_size_unit" id="item_size_unit" class="form-control m-input">
+                                <?php 
+                                if( $qc_form->order_type=='Bulk'){
+                                  
+
+                                ?>
+                                <option  <?php echo $qc_form->item_size_unit=='Kg' ? 'selected' :''?>  value="Kg">KG</option>
+                                <option  <?php echo $qc_form->item_size_unit=='L' ? 'selected' :''?> value="L">L</option>
+                                <?php
+                             }else{
+                                ?>
+                                <option  <?php echo $qc_form->item_size_unit=='Ml' ? 'selected' :''?>   value="Ml">ML</option>
+                                <option   <?php echo $qc_form->item_size_unit=='Gm' ? 'selected' :''?>  value="Gm">Gm</option>
+                                <?php
+                             }
+                                ?>
+                          </select>
+                           
+                           
+
+                        </div>
+                        <div class="col-lg-1 m-form__group-sub">
+                           <label class="form-control-label"> QTY:</label>
+                           <input type="number" value="{{$qc_form->item_qty}}" style="width:90px;" class="form-control m-input" id="item_qty" name="item_qty" placeholder="QTY" >
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label"> QTY Unit:</label>
+                           <select  style="width:80px;" name="item_qty_unit" id="item_qty_unit" class="form-control m-input">
+                              <?php 
+                              if( $qc_form->order_type=='Bulk'){
+                              ?>
+                              <option <?php echo $qc_form->item_size_unit=='Kg' ? 'selected' :''?>  value="Kg">KG</option>
+                              <option <?php echo $qc_form->item_size_unit=='L' ? 'selected' :''?>  value="L">L</option>
+                              <?php
+                           }else{
+                              ?>
+                              <option value="pcs">pcs</option>
+                            
+                              <?php
+                           }
+                              ?>
+                        </select>
+
+                           
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label"> FM No./S. No:</label>
+                           <input type="text" title="FM No./Sample. No:"  value="{{$qc_form->item_fm_sample_no}}" class="form-control m-input" id="item_fm_sample_no" name="item_fm_sample_no" placeholder="FM No./Sample No" >
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m-form__section m-form__section--first">
+                     <div class="form-group m-form__group row">
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label class="form-control-label"> Selling Price(Rs.):</label>
+                           <input type="number" value="{{$qc_form->item_sp}}"  class="form-control m-input" id="item_selling_price" name="item_selling_price" placeholder="Selling Price" >
+                        </div>
+                        <div class="col-lg-2 m-form__group-sub">
+                           <label class="form-control-label"> Unit:</label>
+                           <select name="item_selling_UNIT" id="item_selling_UNIT" class="form-control m-input">
+                              <?php 
+                              if( $qc_form->order_type=='Bulk'){
+                              ?>
+                              <option <?php echo $qc_form->item_sp_unit=='Kg' ? 'selected' :''?>  value="Kg">KG</option>
+                              <option <?php echo $qc_form->item_sp_unit=='L' ? 'selected' :''?>  value="L">L</option>
+                              <?php
+                           }else{
+                              ?>
+                              <option value="pcs">pcs</option>
+                            
+                              <?php
+                           }
+                              ?>
+                        </select>
+
+                          
+                        </div>
+                        <div class="col-lg-3 m-form__group-sub">
+                           <label class="form-control-label"> Order Value(Rs.):</label>
+                           <input type="text" disabled style="background:darkslateblue;color:floralwhite;font-weight:800" value="{{ $qc_form->item_sp* $qc_form->item_qty}}" class="form-control m-input" id="order_value" name="order_value" placeholder="" >
+                        </div>    
+                        <div class="col-lg-4 m-form__group-sub">
+                              <div class="m-form__group form-group">
+                                    <label for="">Order For:</label>
+                                    <div class="m-radio-inline">
+                                       <label class="m-radio m-radio--check-bold m-radio--state-primary">
+                                          <input type="radio" <?php echo $qc_form->export_domestic=='1' ? 'checked':'' ?>  value="1" name="order_for" checked> Domestic
+                                          <span></span>
+                                       </label>
+                                       <label class="m-radio m-radio--check-bold m-radio--state-primary">
+                                          <input type="radio" <?php echo $qc_form->export_domestic=='2' ? 'checked':'' ?>   value="2" id="order_for" name="order_for"> Export
+                                          <span></span>
+                                       </label>
+                                       
+                                    </div>
+                                    
+                                 </div>
+
+                        </div>                   
+                        
+                     </div>
+                  </div>
+               <div class="row">
+                     <div class="col-xl-6">
+                           <div class="m-form__section m-form__section--first">
+                                 <div class="form-group m-form__group row">
+                                    <div class="col-lg-6 m-form__group-sub">
+                                       <label class="form-control-label"> Fragrance</label>
+                                       <input type="text"  value ="{{$qc_form->order_fragrance}}" class="form-control m-input" id="order_fragrance" name="order_fragrance" placeholder="Fragrance" >
+                                    </div>
+                                    
+                                 </div>
+                           </div>
+
+
+
+                           {{-- aa --}}
+
+                     </div>
+               </div>
+
+                  {{-- ajaja layout chnage --}}
+                  <br>
+                  <div class="row">
+                     <div class="col-xl-6">
+                           <div class="m-form__section m-form__section--first">
+                                 <div class="form-group m-form__group row">
+                                    <div class="col-lg-612m-form__group-sub">
+                                       <div class="m-form__group form-group">
+                                          <label for="">Printed Box</label>
+                                          <div class="m-radio-inline">
+                                             <?php 
+                                             $j=0;
+                                             foreach ($qcBOM_form as $key => $value) { 
+                                                if($value->m_name=='Printed Box'){
+                                                   $j++;
+                                                   ?>
+                                                   <label class="m-radio">
+                                                         <input type="radio" <?php echo $value->bom_from=='Order' ? "checked":""  ?> name="printed_box" value="Order"> Order
+                                                         <span></span>
+                                                      </label>
+                                                      <label class="m-radio">
+                                                         <input type="radio" <?php echo $value->bom_from=='From Client' ? "checked":""  ?> name="printed_box" value="From Client">From Client
+                                                         <span></span>
+                                                      </label>
+                                                      <label class="m-radio">
+                                                         <input type="radio" <?php echo $value->bom_from=='N/A' ? "checked":""  ?>   name="printed_box" value="N/A"> N/A
+                                                         <span></span>
+                                                      </label>
+                                                   <?php
+                                                }
+                                             }
+                                             if($j==0){
+                                                      ?>
+                                                      <label class="m-radio">
+                                                            <input type="radio"  name="printed_box" value="Order"> Order
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio"  name="printed_box" value="From Client">From Client
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio"  name="printed_box" value="N/A"> N/A
+                                                            <span></span>
+                                                         </label>
+                                                      <?php
+                                                }
+                                             ?>
+                                             
+
+                                          </div>
+                                          <span class="m-form__help"></span>
+                                       </div>
+                                    </div>
+            
+                                 </div>
+                           </div>
+                     </div>
+                     <div class="col-xl-6">
+                           <div class="m-form__section m-form__section--first">
+                                 <div class="form-group m-form__group row">
+                                    <div class="col-lg-612m-form__group-sub">
+                                       <div class="m-form__group form-group">
+                                          <label for="">Printed Label</label>
+                                          <div class="m-radio-inline">
+                                                <?php 
+                                                $i=0; 
+                                                foreach ($qcBOM_form as $key => $value) {
+                                                   
+                                                   if($value->m_name=='Printed Label'){
+                                                      $i++;
+                                                      ?>
+                                                      <label class="m-radio">
+                                                            <input type="radio" <?php echo $value->bom_from=='Order' ? "checked":""  ?> name="printed_label" value="Order"> Order
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio" <?php echo $value->bom_from=='From Client' ? "checked":""  ?> name="printed_label" value="From Client">From Client
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio" <?php echo $value->bom_from=='N/A' ? "checked":""  ?>   name="printed_label" value="N/A"> N/A
+                                                            <span></span>
+                                                         </label>
+                                                      <?php
+                                                   }
+                                                }
+                                                if($i==0){
+                                                      ?>
+                                                      <label class="m-radio">
+                                                            <input type="radio"  name="printed_label" value="Order"> Order
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio"  name="printed_label" value="From Client">From Client
+                                                            <span></span>
+                                                         </label>
+                                                         <label class="m-radio">
+                                                            <input type="radio"  name="printed_label" value="N/A"> N/A
+                                                            <span></span>
+                                                         </label>
+                                                      <?php
+                                                }
+                                                ?>
+                                             </div>
+                                          <span class="m-form__help"></span>
+                                       </div>
+                                    </div>
+            
+                                 </div>
+                           </div>
+                     </div>
+                           
+               </div>
+               
+                 
+                        <div class="col-xl-12">
+                              <div class="row">
+                                    <div class="col-xl-6">
+                                          <div class="m-form__section m-form__section--first">
+                                                <div class="form-group m-form__group row">
+                                                   <div class="col-lg-612m-form__group-sub">
+                                                      <div class="m-form__group form-group">
+                                                         <label for="">Printed Box</label>
+                                                         <div class="m-radio-inline">
+                                                            <label class="m-radio">
+                                                               <input type="radio" name="printed_box" value="Order"> Order
+                                                               <span></span>
+                                                            </label>
+                                                            <label class="m-radio">
+                                                               <input type="radio" name="printed_box" value="From Client">From Client
+                                                               <span></span>
+                                                            </label>
+                                                            <label class="m-radio">
+                                                               <input type="radio" checked  name="printed_box" value="N/A"> N/A
+                                                               <span></span>
+                                                            </label>
+                                                         </div>
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                   </div>
+                           
+                                                </div>
+                                          </div>
+                                          
+                                    </div>
+                                    <div class="col-xl-6">
+                                          <div class="m-form__section m-form__section--first">
+                                                <div class="form-group m-form__group row">
+                                                   <div class="col-lg-612m-form__group-sub">
+                                                      <div class="m-form__group form-group">
+                                                         <label for="">Printed Label</label>
+                                                         <div class="m-radio-inline">
+                                                               <label class="m-radio">
+                                                                  <input type="radio" name="printed_label" value="Order"> Order
+                                                                  <span></span>
+                                                               </label>
+                                                               <label class="m-radio">
+                                                                  <input type="radio" name="printed_label" value="From Client">From Client
+                                                                  <span></span>
+                                                               </label>
+                                                               <label class="m-radio">
+                                                                  <input type="radio" checked name="printed_label" value="N/A"> N/A
+                                                                  <span></span>
+                                                               </label>
+                                                            </div>
+                                                         <span class="m-form__help"></span>
+                                                      </div>
+                                                   </div>                           
+                                                </div>
+                                          </div>                                          
+                                    </div>
+                              </div>
+                              <br>
+                              
+                              
+
+                  <div class="m-form__section m-form__section--first">                     
+                         {{-- form repqter --}}
+                         <div id="m_repeater_2">
+                           <div class="form-group   row" id="m_repeater_2">
+                                 <div data-repeater-list="qc" class="qc_from">
+                                 <?php                     
+                                 foreach ($qcBOM_form as $key => $value) {                             
+                                   
+                                    if($value->m_name=='Printed Box' || $value->m_name=='Printed Label'){
+
+                                    }else{
+                                       ?>
+                                       <div data-repeater-item class="form-group  row align-items-center" style="margin-left: 29px;">
+                                             <div class="col-md-3">
+                                                
+                                             <input type="text" value="{{$value->m_name}}" name="bom" class="form-control m-input" placeholder="Bill of Material Name">
+                                                <span class="m-form__help"></span>
+                                             </div>
+                                             <div class="col-md-2">
+                                               
+                                                <input type="text" value="{{$value->qty}}" name="bom_qty" class="form-control m-input" placeholder="Quantity">
+                                                <span class="m-form__help"></span>
+                                             </div>
+                                             <div class="col-md-2">
+                                                   <select name="bom_cat" id="" class="form-control m-input">
+                                                         <option value="">-SELECT-</option>
+                                                         <?php 
+                                                         $data_arr=AyraHelp::getBOMItemCategory();
+                                                         foreach ($data_arr as $dkey => $cvalue) {
+                                                           ?>
+                                                           <option <?php echo $cvalue->cat_name==$value->bom_cat ? 'selected':'' ?> value="{{$cvalue->cat_name}}">{{$cvalue->cat_name}}</option>
+                                                           <?php
+                                                         }
+                                                         ?>
+                                                        
+                                                        
+                                                     </select>
+                                                  
+                                             </div>
+                                             <div class="col-md-3">
+                                               <?php 
+                                                  if($value->bom_from=='From Client'){
+                                                   ?>
+                                                    <div class="m-form__group form-group" style="margin-bottom:15px">                                                      
+                                                         <div class="m-checkbox-inline">
+                                                            <label class="m-checkbox">
+                                                               <input type="checkbox" value="from_client" checked name="bom_from"> from client
+                                                               <span></span>
+                                                            </label>
+                                                         </div>                                                      
+                                                      </div>
+                                                   <?php
+                                                  }else{
+                                                   ?>
+                                                    <div class="m-form__group form-group" style="margin-bottom:15px">                                                      
+                                                         <div class="m-checkbox-inline">
+                                                            <label class="m-checkbox">
+                                                               <input type="checkbox" value="from_client" name="bom_from"> from client
+                                                               <span></span>
+                                                            </label>
+                                                         </div>                                                      
+                                                      </div>
+                                                   <?php
+                                                  }
+                                                ?>
+                                                  
+
+                                                </div>
+                                            
+                                             <div class="col-md-2">
+                                                <div data-repeater-delete="" class="btn-sm btn btn-danger m-btn m-btn--icon m-btn--pill">
+                                                   <span>
+                                                   <i class="la la-trash-o"></i>
+                                                   <span>Delete</span>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                          </div>
+
+                                       <?php
+                                    }
+                                   ?>
+                                   
+                                       
+                                    
+                                   <?php
+   
+                                 }
+                                 
+   
+                                 ?>
+                              </div>
+   
+                           </div>
+                           
+                           
+                          
+   
+                           <div class="m-form__group form-group row">
+                              <label class="col-lg-2 col-form-label"></label>
+                              <div class="col-lg-4">
+                                 <div data-repeater-create="" class="btn btn btn-sm btn-brand m-btn m-btn--icon m-btn--pill m-btn--wide">
+                                    <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Add</span>
+                                    </span>
+                                 </div>
+                              </div>
+                           </div>
+                           <br>
+   
+                        </div>
+                        {{-- form repqter --}}
+                     </div>
+
+                     
+                        </div> 
+                        {{-- end of 6 --}}
+                        
+                        
+                  </div>
+                  {{-- ajaja layout chnage --}}
+
+                  
+                  
+
+                  <!--begin:: Widgets/Audit Log-->
+
+                  <div class="m-demo ajorderType">
+                     <div class="m-demo__preview">
+                        <div class="m-list-search">
+                           <div class="m-list-search__results">
+                            
+                              <span class="m-list-search__result-category m-list-search__result-category--first">
+                                 PACKAGING PROCESSES
+                              </span>
+                              <?php 
+                                            $i=0;                            
+                              foreach ($qcPK_form as $key => $value) {
+                                 $i++;
+                                 // print_r($value->qc_yes);
+                                 // print_r($value->qc_no);
+
+                                 ?>
+                                 {{-- tag --}}
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                          <a href="javascript::void(0)" class="m-list-search__result-item">
+                                                <span class="m-list-search__result-item-icon"><i class="flaticon-interface-3 m--font-primary"></i></span>
+                                          <span class="m-list-search__result-item-text">{{$value->qc_label}}</span>
+                                             </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                          <div class="m-form__group form-group">                                                     
+                                                <div class="m-checkbox-inline">
+                                                   <div class="row">                                                                    
+                                                   <div class="col-md-6">
+                                                         <label class="m-checkbox">
+                                                               <input type="radio" <?php echo $value->qc_yes=='YES' ? 'checked':'' ?> name="f_<?php echo $i?>" value="YES" > YES 
+                                                               <span></span>
+                                                            </label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                         <label class="m-checkbox">
+                                                               <input type="radio" <?php echo $value->qc_no=='NO' ? 'checked':'' ?> name="f_<?php echo $i?>" value="NO"> NO
+                                                               <span></span>
+                                                            </label>
+                                                   </div>
+                                                </div>
+                                                </div>
+                                             </div>                                                      </div>                                                      
+                                 </div>
+                                 {{-- tag --}}
+
+                                 <?php
+                              }
+                              ?>
+                              
+                              
+
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+
+                                    <!--begin::Preview-->
+												<div class="m-demo ">
+                                       <div class="m-demo__preview">
+                                          <div class="m-list-search">
+                                             <div class="m-list-search__results">                                              
+                                                <span style="color:#035496" class="m-list-search__result-category m-list-search__result-category--first">
+                                                   Production Remarks
+                                                </span>
+                                                {{-- tag --}}
+                                                <div class="row">
+                                                   <div class="col-md-12">
+                                                      <textarea name="production_rmk" class="form-control" id="" cols="1" rows="2"></textarea>
+                                                   </div>                                                                                                        
+                                                </div>
+                                                {{-- tag --}}
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Preview-->
+                                     <!--begin::Preview-->
+												<div class="m-demo ">
+                                       <div class="m-demo__preview">
+                                          <div class="m-list-search">
+                                             <div class="m-list-search__results">                                              
+                                                <span style="color:#035496" class="m-list-search__result-category m-list-search__result-category--first">
+                                                   PACKAGING Remarks
+                                                </span>
+                                                {{-- tag --}}
+                                                <div class="row">
+                                                   <div class="col-md-12">
+                                                      <textarea name="packeging_rmk" class="form-control" id="" cols="1" rows="2"></textarea>
+                                                   </div>                                                                                                        
+                                                </div>
+                                                {{-- tag --}}
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--end::Preview-->
+
+                  </div> <!--end of private la-->
+
+													
+                  </div>
+                  
+               </div>
+               <div class="m-portlet__foot m-portlet__foot--fit">
+                  <div class="m-form__actions m-form__actions">
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <button type="submit" data-wizard-action="submit" class="btn btn-primary aj_addmore_save">Save</button>
+                           
+                           <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+          
+         </div>
+         <!-- end tab -->
+      </div>
+   </div>
+</div>
+<!-- main  -->
+

@@ -1,0 +1,1 @@
+SELECT `order_id`,`subOrder`,`brand_name`,`item_name`,`item_qty`,`item_size`,`item_size_unit`,`item_sp`,`created_at`,`created_by`,`order_type`,`order_repeat` FROM `qc_forms` WHERE `dispatch_status`=1

@@ -1,0 +1,32 @@
+*/18 * * * * curl -s "http://192.168.1.180/api/getIndiaMartData"> /dev/null
+
+*/25 * * * * curl -s "http://192.168.1.180/api/getIndiaMartData_2"> /dev/null
+
+*/35 * * * * curl -s "http://192.168.1.180/api/getIndiaMartData_3" > /dev/null
+
+*/20 * * * * curl -s "http://192.168.1.180/api/getIndiaMartData_4" > /dev/null
+
+*/40 * * * * curl -s "http://192.168.1.180/api/getIndiaMartData_5" > /dev/null
+
+#*/45 * * * * curl -s "http://192.168.1.180/api/setAjaxRunCronjonLeadGraph" > /dev/null
+
+*/20 * * * * curl -s "http://192.168.1.180/api/sendSMS2Lead"> /dev/null
+
+*/15 * * * * curl -s "http://192.168.1.180/api/sendEmail2Lead"> /dev/null
+
+10 10  * * * curl -s "http://192.168.1.180/api/sendEmail_forSampleNotification" > /dev/null
+
+10 15  * * * curl -s "http://192.168.1.180/api/sendEmail_forSampleNotification_oils" > /dev/null
+
+10 20  * * * curl -s "http://192.168.1.180/api/sendEmail_forSampleNotification_ExceptOils" > /dev/null
+
+*/90  * * * * curl -s "http://192.168.1.180/api/sendEmailSMS2Lead_PACKING"> /dev/null
+
+#*/28 * * * * curl -s "http://192.168.1.180/api/setAjaxRunCronjonLeadCOUNT" > /dev/null
+
+#0 11 * * *  curl -s "http://192.168.1.180/api/getOrderStagesDelayAPIV1" > /dev/null
+#*/80 * * * * curl -s "http://192.168.1.180/api/setSinceFromApiV1" > /dev/null
+#*/70 * * * * curl -s "http://192.168.1.180/api/setOrderStagesApiV1" > /dev/null
+#*/120 * * * * curl -s "http://192.168.1.180/api/setOrderStagesApi" > /dev/null
+10 10  * * * curl -s "http://192.168.1.180/api/sendEmail_forOrderNotification" > /dev/null
+

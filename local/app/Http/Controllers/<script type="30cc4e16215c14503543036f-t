@@ -1,0 +1,11 @@
+<script type="30cc4e16215c14503543036f-text/javascript">
+   $(function () {
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function (json) {
+        ipAddress = json.ip;
+        localStorage.setItem("clientAddr", json.ip);
+      }
+    );
+  });
+  
+</script>

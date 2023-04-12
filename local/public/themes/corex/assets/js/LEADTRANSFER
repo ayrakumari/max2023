@@ -1,0 +1,28 @@
+UPDATE `clients` SET `added_by` = '125' WHERE `clients`.`id` = 1559; 
+UPDATE `samples` SET `created_by` = '125' WHERE `samples`.`client_id` = 1559; 
+UPDATE `client_notes` SET `user_id` = '125' WHERE `client_notes`.`clinet_id` = 1559; 
+UPDATE `qc_forms` SET `created_by` = '125' WHERE `qc_forms`.`client_id` = 1559; 
+
+
+UPDATE `clients` SET `added_by` = '125' WHERE `clients`.`id` = 1448; 
+UPDATE `samples` SET `created_by` = '125' WHERE `samples`.`client_id` = 1448; 
+UPDATE `client_notes` SET `user_id` = '125' WHERE `client_notes`.`clinet_id` = 1448; 
+UPDATE `qc_forms` SET `created_by` = '125' WHERE `qc_forms`.`client_id` = 1448; 
+
+
+UPDATE `clients` SET `added_by` = '76' WHERE `clients`.`id` = 1436; 
+UPDATE `samples` SET `created_by` = '76' WHERE `samples`.`client_id` = 1436; 
+UPDATE `client_notes` SET `user_id` = '76' WHERE `client_notes`.`clinet_id` = 1436; 
+UPDATE `qc_forms` SET `created_by` = '76' WHERE `qc_forms`.`client_id` = 1436; 
+
+
+
+
+=================================================================
+
+UPDATE `clients` SET `added_by` = '100' WHERE `clients`.`id` = 1808; 
+UPDATE `samples` SET `created_by` = '100' WHERE `samples`.`client_id` = 1808; 
+UPDATE `client_notes` SET `user_id` = '100' WHERE `client_notes`.`clinet_id` = 1808; 
+UPDATE `qc_forms` SET `created_by` = '100' WHERE `qc_forms`.`client_id` = 1808; 
+
+
