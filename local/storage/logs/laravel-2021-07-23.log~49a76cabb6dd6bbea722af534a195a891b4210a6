@@ -1,5 +1,5 @@
 [2021-07-23 12:14:44] local.ERROR: syntax error, unexpected 'return' (T_RETURN) {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'return' (T_RETURN) at /var/www/example.com/local/app/Helpers/AyraHelp.php:12016)
-[stacktrace]
+[stacktrace]  dd
 #0 /var/www/example.com/local/vendor/composer/ClassLoader.php(322): Composer\\Autoload\\includeFile()
 #1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
 #2 /var/www/example.com/local/app/Http/Middleware/LogoutMiddleware.php(43): spl_autoload_call()
