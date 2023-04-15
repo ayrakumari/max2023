@@ -39,13 +39,7 @@
 													<label>Sales Person:</label>
 													<select class="form-control m-input" id="salesPerson">
 														<option  value="">-SELECT-</option>
-												        <option  value="1">Aayush</option>
-												        <option  value="90">Pooja Gupta</option>
-												        <option  value="134">Roby Gupta</option>
-												        <option  value="3">Sahil Gupta </option>
-												        <option  value="4">Suraj Mishra</option>
-												        <option  value="40">AZAD M</option>
-
+												        
 
 												</select>
 												</div>
