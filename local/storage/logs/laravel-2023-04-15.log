@@ -1,0 +1,32 @@
+[2023-04-15 11:27:39] production.ERROR: Class 'Ayra\Console\AyraCommand' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Ayra\\Console\\AyraCommand' not found at /var/www/max/local/vendor/imajkumar/laravel-binary-tree/src/Ayra/Providers/AyraServiceProvider.php:53)
+[stacktrace]
+#0 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(785): Ayra\\Providers\\AyraServiceProvider->Ayra\\Providers\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#1 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\\Container\\Container->build(Object(Closure))
+#2 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\\Container\\Container->resolve('command.Ayra', Array)
+#3 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\\Container\\Container->make('command.Ayra', Array)
+#4 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(258): Illuminate\\Foundation\\Application->make('command.Ayra')
+#5 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(272): Illuminate\\Console\\Application->resolve('command.Ayra')
+#6 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(280): Illuminate\\Console\\Application->resolveCommands(Array)
+#7 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(149): Illuminate\\Support\\ServiceProvider->Illuminate\\Support\\{closure}(Object(Illuminate\\Console\\Application))
+#8 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(72): Illuminate\\Console\\Application->bootstrap()
+#9 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(342): Illuminate\\Console\\Application->__construct(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Events\\Dispatcher), '5.8.38')
+#10 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(133): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#11 /var/www/max/local/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+"} 
+[2023-04-15 11:29:32] production.ERROR: Class 'Ayra\Console\AyraCommand' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Ayra\\Console\\AyraCommand' not found at /var/www/max/local/vendor/imajkumar/laravel-binary-tree/src/Ayra/Providers/AyraServiceProvider.php:53)
+[stacktrace]
+#0 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(785): Ayra\\Providers\\AyraServiceProvider->Ayra\\Providers\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#1 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(667): Illuminate\\Container\\Container->build(Object(Closure))
+#2 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Container/Container.php(615): Illuminate\\Container\\Container->resolve('command.Ayra', Array)
+#3 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(767): Illuminate\\Container\\Container->make('command.Ayra', Array)
+#4 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(258): Illuminate\\Foundation\\Application->make('command.Ayra')
+#5 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(272): Illuminate\\Console\\Application->resolve('command.Ayra')
+#6 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Support/ServiceProvider.php(280): Illuminate\\Console\\Application->resolveCommands(Array)
+#7 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(149): Illuminate\\Support\\ServiceProvider->Illuminate\\Support\\{closure}(Object(Illuminate\\Console\\Application))
+#8 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Console/Application.php(72): Illuminate\\Console\\Application->bootstrap()
+#9 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(342): Illuminate\\Console\\Application->__construct(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Events\\Dispatcher), '5.8.38')
+#10 /var/www/max/local/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(133): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#11 /var/www/max/local/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+"} 

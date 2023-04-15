@@ -8,14 +8,7 @@ Route::get('/clearme', function () {
 
     //https://www.google.com/recaptcha/admin/site/443615765/setup
     // sudo rm -r ./storage/framework/cache
-    //goday:4*u2XVe#DJO& | aayushgx
-    //send grid : bointl | 0NJ%Co$6KLD
-    //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
-    //send grind BoERP10may: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
-    
-    //india mart : key : "mR22Eb9u53jITPet73WI7l6NpVvBnzg=" : 8448576840 
-
-
+   
 
     //sudo shutdown -h +3
     //whereDate('created_at', '>=',$from)->whereDate('created_at', '<=',$to)->whereYear('created_at', date('Y'))->get();
