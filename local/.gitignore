@@ -1,4 +1,5 @@
 /node_modules
+/local/storage
 ../demo
 /public/hot
 /public/storage
