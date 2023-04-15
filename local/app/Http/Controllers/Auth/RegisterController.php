@@ -200,7 +200,7 @@ class RegisterController extends Controller
    // $start_date = '29-May-2020';
     //$stop_date='01-Jul-2020';
 
-    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999525990/GLUSR_MOBILE_KEY/MTU5MzIzOTg0Mi4yMjQ1IzczNjg1Mjk=/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';
+    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU5MzIzOTg0Mi4yMjQ1IzczNjg1Mjk=/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';
 
     $data = file_get_contents($url); // put the contents of the file into a variable
     $characters = json_decode($data); // decode the JSON feed
@@ -296,7 +296,7 @@ class RegisterController extends Controller
     $stop_date = date("Y-m-d");
 
     //$url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/8929503295/GLUSR_MOBILE_KEY/MTU3ODk5OTM0OC4wMTkyIzI3NDI0MjUx/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
-    $url = 'https://www.tradeindia.com/utils/my_inquiry.html?userid=8850185&profile_id=12475609&key=43d616a4bf6566bb07c1249f2605deb8&from_date=' . $start_date . '&to_date=' . $stop_date . '&limit=200';
+    $url = 'https://www.tradeindia.com/utils/my_inquiry.html?userid=88501485&profile_id=124754609&key=43d616a4bf6566bb07c1249f2605deb8&from_date=' . $start_date . '&to_date=' . $stop_date . '&limit=200';
 
     $data = file_get_contents($url); // put the contents of the file into a variable
     $characters = json_decode($data); // decode the JSON feed
@@ -397,7 +397,7 @@ class RegisterController extends Controller
     $start_dateA = date("Y-m-d", strtotime('-1 day'));
     $stop_date = date("d-M-Y");
 
-    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9811098426/GLUSR_MOBILE_KEY/MTYwMDg1NTYzMi43NTU2IzkyMTYwNzc3/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';
+    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTYwMDg1NTYzMi43NTU2IzkyMTYwNzc3/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';
 
 
     $data = file_get_contents($url); // put the contents of the file into a variable
@@ -578,7 +578,7 @@ class RegisterController extends Controller
     $start_dateA = date("Y-m-d", strtotime('-1 day'));
     $stop_date = date("d-M-Y");
 
-    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/8929503295/GLUSR_MOBILE_KEY/MTU3ODk5OTM0OC4wMTkyIzI3NDI0MjUx/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';  
+    $url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU3ODk5OTM0OC4wMTkyIzI3NDI0MjUx/Start_Time/' . $start_date . '/End_Time/' . $stop_date . '/';  
 
 
     $data = file_get_contents($url); // put the contents of the file into a variable
@@ -759,12 +759,8 @@ class RegisterController extends Controller
     $start_dateA = date("Y-m-d", strtotime('-1 day'));
     $stop_date = date("d-M-Y");
 
-    $url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999955922/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
-    //$url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999955922/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/16-Jul-2020/End_Time/18-Jul-2020/';
-    //$url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999955922/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/1-Jul-2020/End_Time/15-Jul-2020/';
-    //$url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999955922/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/19-Jul-2020/End_Time/31-Jul-2020/';
-    //$url = 'https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9999955922/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/01-Jun-2020/End_Time/07-Jun-2020/';
-
+    $url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
+   
 
     $data = file_get_contents($url); // put the contents of the file into a variable
    
