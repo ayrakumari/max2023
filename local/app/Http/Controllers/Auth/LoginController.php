@@ -169,7 +169,7 @@ class LoginController extends Controller
 
         $whitelistData = array(
             '127.0.0.1',
-            '192.168.1.180',
+            '10.10.9.26',
             '::1'
         );
         //if my system is ERP then can able to login with otp **
