@@ -585,38 +585,7 @@
                            </div>
                         </div>
 
-                        <!-- price by part  -->
-                        <div style="display:block;" class="m-form__section m-form__section--first" style="background-color: #c1c1c1;">
-                           <div class="form-group m-form__group row">
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Row Material Price per Kg" class="form-control-label">RM Price/Kg:</label>
-                                 <input title="Enter Row Material Price per Kg" type="number" class="form-control m-input" id="item_RM_Price" name="item_RM_Price" placeholder="">
-                              </div>
-
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Price of Bottle/Jar/Cap" class="form-control-label">Bottle/Cap/Pump:</label>
-                                 <input title="Enter Price of Bottle/Jar/Cap" type="number" class="form-control m-input" id="item_BCJ_Price" name="item_BCJ_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Price of Label" class="form-control-label"> Label Price:</label>
-                                 <input title="Enter Price of Label" type="number" class="form-control m-input" id="item_Label_Price" name="item_Label_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">M.Carton Price:</label>
-                                 <input title="Enter Material Carton Price" type="number" class="form-control m-input" id="item_Material_Price" name="item_Material_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">L & C Price:</label>
-                                 <input title="Enter Labour & Conversion Price" type="number" class="form-control m-input" id="item_LabourConversion_Price" name="item_LabourConversion_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">Margin:</label>
-                                 <input title="Enter Margin" type="number" class="form-control m-input" id="item_Margin_Price" name="item_Margin_Price" placeholder="">
-                              </div>
-
-                           </div>
-                        </div>
-                        <!-- price by part  -->
+                    
                         <div class="m-form__section m-form__section--first">
                            <div class="form-group m-form__group row">
                               <div class="col-lg-3 m-form__group-sub">

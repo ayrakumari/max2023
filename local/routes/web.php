@@ -158,6 +158,7 @@ Route::get('getSaleLeadStages', 'OrderController@getSaleLeadStages')->name('getS
 Route::post('/setSaveProcessActionSalesLead', 'OrderController@setSaveProcessActionSalesLead')->name('setSaveProcessActionSalesLead');
 Route::get('/edit-lead/{cid}', 'ClientController@qcformLeadEDIT')->name('qcformLeadEDIT');
 Route::post('/editNewLeadSales', 'ClientController@editNewLeadSales')->name('editNewLeadSales'); //v2
+Route::post('/addNewBrandtoClient', 'ClientController@addNewBrandtoClient')->name('addNewBrandtoClient'); //v2
 
 Route::post('/getClientsListSalesLeadV1', 'ClientController@getClientsListSalesLeadV1')->name('getClientsListSalesLeadV1'); //v2
 

@@ -7,19 +7,19 @@
          <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
                <h3 class="m-portlet__head-text">
-                  QC ENTRY
+                  Order Entry
                </h3>
             </div>
          </div>
          <div class="m-portlet__head-tools">
             <ul class="m-portlet__nav">
-              
+
 
                <li class="m-portlet__nav-item">
                   <a href="{{ route('qcform.list')}}" class="btn btn-secondary m-btn m-btn--custom m-btn--icon">
                      <span>
                         <i class="la la-arrow-left"></i>
-                        <span>QC LIST </span>
+                        <span>Order List </span>
                      </span>
                   </a>
                </li>
@@ -27,39 +27,47 @@
          </div>
       </div>
       <?php
-
-    
       
+
+   
+
       use App\Helpers\AyraHelp;
 
       $order_arr = AyraHelp::getOrderCODE();
       $order_arrIndex = AyraHelp::getOrderCODEIndex();
       $frsh = "fresh";
-      $leadDataArr=AyraHelp::getLeadDataByID($data);
+      $leadDataArr = AyraHelp::getLeadDataByID($data);
       //get samples of given client 
-      
-      $sampleArrData = DB::table('samples')
-            ->select('id', 'sample_code')
-            ->where('client_id',$leadDataArr->id)
-            ->where('is_deleted',0)            
-            ->get();
-      //get samples of given client 
-      
-       $leadC = DB::table('qc_forms')
-            ->where('is_deleted',0)
-            ->where('client_id',$leadDataArr->id)
-            ->count();
-            
-         //get all order id of lead 
-         $leadCArrData = DB::table('qc_forms')
-            ->where('is_deleted',0)
-            ->where('client_id',$leadDataArr->id)
-            ->get();
-         //get all order id of lead 
 
+      $sampleArrData = DB::table('samples')
+         ->select('id', 'sample_code')
+         ->where('client_id', $leadDataArr->id)
+         ->where('is_deleted', 0)
+         ->get();
+      //get samples of given client 
+
+      $leadC = DB::table('qc_forms')
+         ->where('is_deleted', 0)
+         ->where('client_id', $leadDataArr->id)
+         ->count();
+
+      //get all order id of lead 
+      $leadCArrData = DB::table('qc_forms')
+         ->where('is_deleted', 0)
+         ->where('client_id', $leadDataArr->id)
+         ->get();
+
+         $leadCArrDataBrandArr = DB::table('clients_brands')
+         ->where('is_deleted', 0)
+         ->where('client_id', $leadDataArr->id)
+         ->get();
+
+      //get all order id of lead 
+
+
+      //   print_r($leadDataArr);
+      //   die;
       
-    //   print_r($leadDataArr);
-    //   die;
 
       ?>
       <style>
@@ -85,25 +93,17 @@
                         <div class="col-lg-3 m-form__group-sub">
                            <label class="form-control-label">Lead:</label>
                            <select class="form-control m-select2 client_name_qcform" id="m_select2_1" name="client_id">
-                             
-                             
-                                 
-                                 <option selected value="{{$leadDataArr->id}}">{{$leadDataArr->firstname}} | {{$leadDataArr->phone}} | {{$leadDataArr->email}}</option>
-                                 
-
-                             
-
-
+                              <option selected value="{{$leadDataArr->id}}">{{$leadDataArr->firstname}} | {{$leadDataArr->phone}} | {{$leadDataArr->email}}</option>
                            </select>
                         </div>
                         <div class="col-lg-2 m-form__group-sub">
-                           <label class="form-control-label">TARGET :</label>
+                           <label class="form-control-label">Target Date :</label>
                            <div class="input-group">
                               <input type="text" name="due_date" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
                            </div>
                         </div>
                         <div class="col-lg-2 m-form__group-sub">
-                           <label class="form-control-label">COMMITTED :</label>
+                           <label class="form-control-label">Committed Date :</label>
                            <div class="input-group">
                               <input type="text" name="commited_date" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
                            </div>
@@ -125,33 +125,7 @@
 
                            </div>
                         </div>
-                        <div class="col-lg-3 m-form__group-sub">
-                           <label class="form-control-label">* Order Type:</label>
-                           <div class="m-checkbox-inline">
-                              <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-success">
-                                 <?php 
-                                 
-                                 if($leadC<=0){
-                                    ?>
-                                     <input type="radio" value="1" name="order_type_v1"> New
-                                 <span></span>
-                              </label>
-                                    <?php
-
-                                 }
-                                 ?>
-                                
-                              <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-success">
-                                 <input type="radio" value="2" name="order_type_v1"> Repeat
-                                 <span></span>
-                              </label>
-                              <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-success">
-                                 <input type="radio" value="3" name="order_type_v1"> Product Addition
-                                 <span></span>
-                              </label>
-
-                           </div>
-                        </div>
+                    
 
                      </div>
                   </div>
@@ -159,7 +133,18 @@
                      <div class="form-group m-form__group row">
                         <div class="col-lg-3 m-form__group-sub">
                            <label class="form-control-label"> Brand:</label>
-                           <input type="text" value="{{$leadDataArr->brand}}" readonly class="form-control m-input" id="client_address" name="brand" placeholder="">
+                           <select class="form-control" name="brand">
+                              <?php
+
+                              foreach ($leadCArrDataBrandArr as $key => $rowDA) {
+                              ?>
+                                 <option value="{{$rowDA->brand}}">{{$rowDA->brand}}</option>
+                              <?php
+                              }
+                              ?>
+                           </select>
+
+                          
                         </div>
                         <div class="col-lg-3 m-form__group-sub">
                            <label>Repeat Order:</label>
@@ -177,16 +162,16 @@
                         <div class="col-lg-2 m-form__group-sub ajorderhide">
                            <label class="form-control-label">Prev Order NO.:</label>
                            <select class="form-control" name="pre_orderno">
-                                 <?php 
-                                 
-                                 foreach ($leadCArrData as $key => $rowDA) {
-                                    ?>
-                                    <option value="{{$rowDA->order_id.'/'.$rowDA->subOrder}}">{{$rowDA->order_id.'/'.$rowDA->subOrder}}</option>
-                                    <?php
-                                 }
-                                 ?>
+                              <?php
+
+                              foreach ($leadCArrData as $key => $rowDA) {
+                              ?>
+                                 <option value="{{$rowDA->order_id.'/'.$rowDA->subOrder}}">{{$rowDA->order_id.'/'.$rowDA->subOrder}}</option>
+                              <?php
+                              }
+                              ?>
                            </select>
-                           
+
                         </div>
                         <div class="col-lg-2 m-form__group-sub ">
                            <label class="form-control-label">Currency:</label>
@@ -201,9 +186,9 @@
                            <input type="text" style="background:burlywood; border:1px solid #035496" class="form-control m-input" name="conv_rate" placeholder="">
                         </div>
                      </div>
-                     
+
                   </div>
-                  
+
 
 
                   <div class="bulkOrderArea">
@@ -214,27 +199,27 @@
                               <label class="form-control-label">Sample ID.:</label>
                               <!-- <label class="form-control-label"> FM No./S. No:</label> -->
                               <!-- <input type="text" title="FM No./Sample. No:" class="form-control m-input" id="item_fm_sample_no" name="item_fm_sample_no_bulk" placeholder="FM No./Sample No"> -->
-                              
+
                               <select class="form-control m-select2 m-input orderSampleIDView" id="item_fm_sample_bulk_N" name="item_fm_sample_bulk_N">
                                  <option selected value="">SELECT SAMPLE</option>
-                                 
+
                                  <?php
-                                    foreach (AyraHelp::getSampleIDByUserIDWithFormulation(Auth::user()->id) as $key => $row) {
+                                 foreach (AyraHelp::getSampleIDByUserIDWithFormulation(Auth::user()->id) as $key => $row) {
 
-                                    ?>
-                                       <option value="{{$row->sample_code_with_part}}">{{$row->sample_code_with_part}}</option>
-                                    <?php
-                                    }
-                                    ?>
-                                     <?php
-                                    foreach (AyraHelp::getSampleIDByUserIDWithFormulationOIL(Auth::user()->id) as $key => $row) {
+                                 ?>
+                                    <option value="{{$row->sample_code_with_part}}">{{$row->sample_code_with_part}}</option>
+                                 <?php
+                                 }
+                                 ?>
+                                 <?php
+                                 foreach (AyraHelp::getSampleIDByUserIDWithFormulationOIL(Auth::user()->id) as $key => $row) {
 
-                                    ?>
-                                       <option value="{{$row->sample_code}}">{{$row->sample_code}}</option>
-                                    <?php
-                                    }
-                                    ?>
-                                    <option value="Regular">Regular</option>
+                                 ?>
+                                    <option value="{{$row->sample_code}}">{{$row->sample_code}}</option>
+                                 <?php
+                                 }
+                                 ?>
+                                 <option value="Regular">Regular</option>
 
                                  <!-- <option value="Standard">Standard</option>
                                  <option value="Regular">Regular</option> -->
@@ -267,6 +252,7 @@
                            </div>
                         </div>
                      </div>
+                     dddd
 
                      <div class="m-form__section m-form__section--first">
                         {{-- form repqter --}}
@@ -476,17 +462,17 @@
 
 
                      <div class="m-form__section m-form__section--first">
-                           <div class="form-group m-form__group row">
-                              <div class="col-lg-3 m-form__group-sub">
-                                 <label class="form-control-label"> MRP(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_batch_mrp" name="item_batch_mrp" placeholder="">
-                              </div>
-                              <div class="col-lg-3 m-form__group-sub">
-                                 <label class="form-control-label"> MRP per ML(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_batch_mrp_ml" name="item_batch_mrp_ml" placeholder="">
-                              </div>
+                        <div class="form-group m-form__group row">
+                           <div class="col-lg-3 m-form__group-sub">
+                              <label class="form-control-label"> MRP(₹):</label>
+                              <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp" name="item_batch_mrp" placeholder="">
+                           </div>
+                           <div class="col-lg-3 m-form__group-sub">
+                              <label class="form-control-label"> MRP per ML(₹):</label>
+                              <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp_ml" name="item_batch_mrp_ml" placeholder="">
                            </div>
                         </div>
+                     </div>
 
                      <!--begin::Preview-->
                      <div class="m-demo ">
@@ -606,7 +592,7 @@
                                     <?php
                                     }
                                     ?>
-                                     <?php
+                                    <?php
                                     foreach (AyraHelp::getSampleIDByUserIDWithFormulationOIL(Auth::user()->id) as $key => $row) {
 
                                     ?>
@@ -627,43 +613,12 @@
                            </div>
                         </div>
 
-                        <!-- price by part  -->
-                        <div style="display:block;" class="m-form__section m-form__section--first" style="background-color: #c1c1c1;">
-                           <div class="form-group m-form__group row">
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Row Material Price per Kg" class="form-control-label">RM Price/Kg:</label>
-                                 <input title="Enter Row Material Price per Kg" type="number" class="form-control m-input" id="item_RM_Price" name="item_RM_Price" placeholder="">
-                              </div>
-
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Price of Bottle/Jar/Cap" class="form-control-label">Bottle/Cap/Pump:</label>
-                                 <input title="Enter Price of Bottle/Jar/Cap" type="number" class="form-control m-input" id="item_BCJ_Price" name="item_BCJ_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label title="Price of Label" class="form-control-label"> Label Price:</label>
-                                 <input title="Enter Price of Label" type="number" class="form-control m-input" id="item_Label_Price" name="item_Label_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">M.Carton Price:</label>
-                                 <input title="Enter Material Carton Price" type="number" class="form-control m-input" id="item_Material_Price" name="item_Material_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">L & C Price:</label>
-                                 <input title="Enter Labour & Conversion Price" type="number" class="form-control m-input" id="item_LabourConversion_Price" name="item_LabourConversion_Price" placeholder="">
-                              </div>
-                              <div class="col-lg-2 m-form__group-sub">
-                                 <label class="form-control-label">Margin:</label>
-                                 <input title="Enter Margin" type="number" class="form-control m-input" id="item_Margin_Price" name="item_Margin_Price" placeholder="">
-                              </div>
-
-                           </div>
-                        </div>
-                        <!-- price by part  -->
+                      
                         <div class="m-form__section m-form__section--first">
                            <div class="form-group m-form__group row">
                               <div class="col-lg-3 m-form__group-sub">
                                  <label class="form-control-label"> Selling Price Per(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number" readonly class="form-control m-input" id="item_selling_price" name="item_selling_price" placeholder="">
+                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_selling_price" name="item_selling_price" placeholder="">
                               </div>
                               <div class="col-lg-2 m-form__group-sub">
                                  <label class="form-control-label"> Unit:</label>
@@ -772,17 +727,8 @@
                               </div>
                            </div>
 
-                           <div class="col-md-6">
-                              <div class="form-group m-form__group">
-                                 <label for="exampleInputEmail1">Purchase order Image</label>
-                                 <div></div>
-                                 <div class="custom-file">
-                                    <input required type="file" name="file_PO" id="inputGroupFile01_PO" class="custom-file-input">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                 </div>
-                              </div>
-                           </div>
-                           
+                         
+
 
 
                         </div>
@@ -845,25 +791,25 @@
                                           </div>
                                        </div>
                                     </div>
-                                    
+
                                  </div>
-                                 
+
                                  <!-- aja -->
-                                
+
                                  <!-- aja -->
-                                 
+
                               </div>
                               <div class="col-lg-12 m-form__group-sub">
-                           <label class="form-control-label">* Artwork Approval:</label>
-                           <div class="m-checkbox">
-                              <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-primary">
-                                 <input type="checkbox" value="1" name="artwork_approval_status"> <b>PACKAGING HAS BEEN FINALIZED AND CAN BE ORDERED BEFORE ARTWORK APPROVAL.</b>
+                                 <label class="form-control-label">* Artwork Approval:</label>
+                                 <div class="m-checkbox">
+                                    <label class="m-checkbox m-checkbox--check-bold m-checkbox--state-primary">
+                                       <input type="checkbox" value="1" name="artwork_approval_status"> <b>PACKAGING HAS BEEN FINALIZED AND CAN BE ORDERED BEFORE ARTWORK APPROVAL.</b>
 
-                                 <span></span>
-                              </label>
+                                       <span></span>
+                                    </label>
 
-                           </div>
-                        </div>
+                                 </div>
+                              </div>
                               <br>
 
 
@@ -1313,8 +1259,8 @@
                         <!--begin:: Widgets/Audit Log-->
 
                         <!--begin::Preview-->
-                        
-                        
+
+
 
                         <div class="m-demo ajorderType">
                            <div class="m-demo__preview">
@@ -1646,11 +1592,11 @@
                            <div class="form-group m-form__group row">
                               <div class="col-lg-3 m-form__group-sub">
                                  <label class="form-control-label"> MRP(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_batch_mrp_PL" name="item_batch_mrp_PL" placeholder="">
+                                 <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp_PL" name="item_batch_mrp_PL" placeholder="">
                               </div>
                               <div class="col-lg-3 m-form__group-sub">
                                  <label class="form-control-label"> MRP per ML(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_batch_mrp_ml_PL" name="item_batch_mrp_ml_PL" placeholder="">
+                                 <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp_ml_PL" name="item_batch_mrp_ml_PL" placeholder="">
                               </div>
                            </div>
                         </div>

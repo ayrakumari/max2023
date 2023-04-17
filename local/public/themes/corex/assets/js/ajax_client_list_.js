@@ -4758,9 +4758,7 @@ var AjaxClientsList = function ()
         item_RM_Price: {
           required: !0,
         },
-        inputGroupFile01: {
-          required: !0,
-        },
+       
         inputGroupFile01_PO: {
           required: !0,
         },
@@ -5005,15 +5003,7 @@ var AjaxClientsList = function ()
         order_fragrance: {
           required: !0
         },
-        item_fm_sample_no: {
-          required: !0
-        },
-        item_fm_sample_no_bulk_N: {
-          required: !0
-        },
-        item_fm_sample_bulk_N: {
-          required: !0
-        },
+       
 
         item_name: {
           required: !0,
@@ -5041,25 +5031,7 @@ var AjaxClientsList = function ()
           required: !0,
         },
 
-        item_RM_Price: {
-          required: !0,
-        },
-
-        item_BCJ_Price: {
-          required: !0,
-        },
-        item_Label_Price: {
-          required: !0,
-        },
-        item_Material_Price: {
-          required: !0,
-        },
-        item_LabourConversion_Price: {
-          required: !0,
-        },
-        item_Margin_Price: {
-          required: !0,
-        },
+        
         bulkOrderTypeV1: {
           required: !0,
         },
@@ -5891,6 +5863,7 @@ var AjaxClientsList = function ()
 
   var demo_client_add_sales = function ()
   {
+   
     var e, r, i = $( "#m_form_add_client_sales" );
     e = i.validate( {
       ignore: ":hidden",
@@ -5921,6 +5894,66 @@ var AjaxClientsList = function ()
       },
       submitHandler: function ( e ) { }
     } ), ( n = i.find( '[data-wizard-action="submit"]' ) ).on( "click", function ( r )
+    {
+      r.preventDefault(), e.form() && ( mApp.progress( n ), i.ajaxSubmit( {
+        success: function ( res )
+        {
+          console.log( res );
+          if ( res.status == 1 )
+          {
+            mApp.unprogress( n ), swal( {
+              title: "",
+              text: "The Lead has been successfully submitted!",
+              type: "success",
+              confirmButtonClass: "btn btn-secondary m-btn m-btn--wide",
+              onClose: function ( e )
+              {
+                window.location.href = BASE_URL + '/leads-list'
+              }
+            } )
+          } else
+          {
+            mApp.unprogress( n ), swal( {
+              title: res.Message,
+              // text: res.status,
+              type: "error",
+              confirmButtonClass: "btn btn-secondary m-btn m-btn--wide",
+              onClose: function ( e )
+              {
+                //window.location.href = BASE_URL+'/client'
+              }
+            } )
+          }
+
+
+        }
+      } ) )
+    } )
+  }
+  var demo_client_add_sales_brand = function ()
+  {
+ 
+    var e, r, i = $( "#m_form_add_client_sales_brand" );
+    e = i.validate( {
+      ignore: ":hidden",
+      rules: {
+        next_brand: {
+          required: !0
+        }
+       
+      },
+      invalidHandler: function ( e, r )
+      {
+        mUtil.scrollTop(), swal( {
+          title: "",
+          text: "There are some errors in your submission. Please correct them.",
+          type: "error",
+          confirmButtonClass: "btn btn-secondary m-btn m-btn--wide"
+
+        } )
+      },
+      submitHandler: function ( e ) { }
+    } ), ( n = i.find( '[data-wizard-action="submitBrand"]' ) ).on( "click", function ( r )
     {
       r.preventDefault(), e.form() && ( mApp.progress( n ), i.ajaxSubmit( {
         success: function ( res )
@@ -6554,10 +6587,12 @@ var AjaxClientsList = function ()
     // public functions
     init: function ()
     {
+     
       demo();
       demo_client_add();
       demo_add_sop();
       demo_client_add_sales();
+      demo_client_add_sales_brand();
       m_form_updateChemistLayoutL();
       demo_orderEDITREQ();
       demo_add_FAQ();

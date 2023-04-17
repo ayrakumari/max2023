@@ -35,6 +35,28 @@ class ClientController extends Controller
     // $this->middleware(['auth', 'isAdmin'])->except(['samples']);
 
   }
+  //addNewBrandtoClient
+  public function addNewBrandtoClient(Request $request)
+  {
+   
+    $txtLeadID = $request->txtLeadID;
+    $next_brand = $request->next_brand;
+
+    DB::table('clients_brands')
+    ->updateOrInsert(
+        ['client_id' => $txtLeadID, 'brand' => $next_brand],
+        ['brand' => $next_brand]
+    );
+
+
+    
+    $res_arr = array(
+      'status' => 1,
+      'Message' => 'Client Brand added  successfully.',
+    );
+    return response()->json($res_arr);
+  }
+  //addNewBrandtoClient
 
   //editNewLeadSales
   public function editNewLeadSales(Request $request)
@@ -427,6 +449,17 @@ class ClientController extends Controller
     'lead_statge' => 1,
 
   ]);
+
+
+  $txtLeadID = $client_obj->client_id;
+ 
+
+  DB::table('clients_brands')
+  ->updateOrInsert(
+      ['client_id' => $txtLeadID, 'brand' => $request->brand],
+      ['brand' => $request->brand]
+  );
+
 
     $res_arr = array(
       'status' => 1,

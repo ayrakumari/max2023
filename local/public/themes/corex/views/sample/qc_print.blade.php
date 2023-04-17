@@ -92,7 +92,7 @@
                     <colgroup width="171"></colgroup>
                     <tr>
                         <td colspan=6 height="23" align="center"><b>
-                                <font face="Liberation Serif" size=4>MAX -ORDER QC FORM</font>
+                                <font face="Liberation Serif" size=4>ORDER FORM</font>
                             </b></td>
                     </tr>
                     <tr>

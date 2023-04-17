@@ -6,7 +6,7 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                      New Lead Edit
+                        New Lead Edit
                     </h3>
                 </div>
             </div>
@@ -25,11 +25,11 @@
             </div>
         </div>
         <div class="m-portlet__body">
-        <?php 
-        // echo "<pre>";
-        // print_r($data);
-        ?>
-             <!--begin::Portlet-->
+            <?php
+            // echo "<pre>";
+            // print_r($data);
+            ?>
+            <!--begin::Portlet-->
             <!-- form  -->
             <!--begin::Form-->
             <form class="m-form m-form--state m-form--fit m-form--label-align-right" id="m_form_add_client_sales" method="post" action="{{ route('editNewLeadSales')}}">
@@ -43,12 +43,12 @@
                                 <input type="text" class="form-control m-input" name="company" value="{{$data->company}}" placeholder="Enter Company">
                             </div>
                             <div class="col-lg-4 m-form__group-sub">
-                                <label class="form-control-label">Brand:</label>
+                                <label class="form-control-label">Primary Brand:</label>
                                 <input type="text" class="form-control m-input" name="brand" value="{{$data->brand}}" placeholder="Enter Brand">
                             </div>
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label">GSTIN:</label>
-                                <input type="text" class="form-control m-input" name="gst"  value="{{$data->gstno}}" placeholder="Enter GSTIN">
+                                <input type="text" class="form-control m-input" name="gst" value="{{$data->gstno}}" placeholder="Enter GSTIN">
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="form-group m-form__group row">
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label">*Name:</label>
-                                <input type="text" class="form-control m-input" name="name"  value="{{$data->firstname}}" placeholder="Enter Name">
+                                <input type="text" class="form-control m-input" name="name" value="{{$data->firstname}}" placeholder="Enter Name">
                             </div>
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label">*Phone:</label>
@@ -100,11 +100,11 @@
                         <div class="form-group m-form__group row">
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label"> Website:</label>
-                                <input type="text" class="form-control m-input" name="website" value="{{$data->website}}"  placeholder="Enter Website">
+                                <input type="text" class="form-control m-input" name="website" value="{{$data->website}}" placeholder="Enter Website">
                             </div>
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label">Remarks:</label>
-                                <input type="text" class="form-control m-input" name="remarks" value="{{$data->remarks}}"  placeholder="Enter Remarks">
+                                <input type="text" class="form-control m-input" name="remarks" value="{{$data->remarks}}" placeholder="Enter Remarks">
                             </div>
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label">Sales Person:</label>
@@ -151,7 +151,36 @@
             <!-- form  -->
 
         </div>
+        <hr>       
+        <div class="m-portlet__body">
+        <h1><strong>Add New Brand</strong></h1>
+            <form class="m-form m-form--state m-form--fit m-form--label-align-right" id="m_form_add_client_sales_brand" method="post" action="{{ route('addNewBrandtoClient')}}">
+                @csrf
+                <input type="hidden" name="txtLeadID" value="{{$data->id}}">
+                <div class="m-portlet__body">
+                    <div class="m-form__section m-form__section--first">
+                        <div class="form-group m-form__group row">
+                            <div class="col-lg-4 m-form__group-sub">
+                                <label class="form-control-label">* Brand:</label>
+                                <input type="text" class="form-control m-input" name="next_brand" value="" placeholder="Enter Brand">
+                            </div>
 
+                        </div>
+                    </div>
+
+                </div>
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                    <div class="m-form__actions m-form__actions">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button type="submit" data-wizard-action="submitBrand" class="btn btn-success">Save Brand</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <!--end::Portlet-->
 

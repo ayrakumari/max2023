@@ -20,7 +20,7 @@ function toasterOptions()
   };
 };
 
-$( '#item_qty' ).focusout( function ()
+$( '#item_qty_old' ).focusout( function ()
 {
   var order_type = $( 'input[name="order_type"]:checked' ).val();
   if ( order_type == 1 )
