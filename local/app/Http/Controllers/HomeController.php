@@ -4618,6 +4618,7 @@ $HTML .= '</table>';
       'sp' => '<i class="fa fa-rupee-sign"></i> ' . $data_qc_arr->item_sp . "/" . $data_qc_arr->item_sp_unit,
       'orderFor' => $data_qc_arr->export_domestic == 1 ? "DOMESTIC" : "EXPORT",
       'fragrance' => $data_qc_arr->order_fragrance,
+      'order_color' => $data_qc_arr->order_color,
       'orderVal' => '<i class="fa fa-rupee-sign"></i> ' . $data_qc_arr->item_sp * $data_qc_arr->item_qty,
       'sp_view' => $sp_view,
       'img_url' => optional($data_qc_arr)->pack_img_url,

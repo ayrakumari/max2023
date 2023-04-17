@@ -893,11 +893,15 @@ $( "input[name='order_type']" ).click( function ()
 
 
     $( "#item_size_unit" ).append( '<option value="Ml">ml</option>' );
-
     $( "#item_size_unit" ).append( '<option value="gm">gm</option>' );
+    $( "#item_size_unit" ).append( '<option value="10X10">10X10</option>' );
+    $( "#item_size_unit" ).append( '<option value="10X10">10X1X10</option>' );
+    $( "#item_size_unit" ).append( '<option value="Nos">Nos</option>' );
+    
     $( "#item_qty_unit" ).append( '<option value="pcs">pcs</option>' );
-
     $( "#item_selling_UNIT" ).append( '<option value="pcs">pcs</option>' );
+    $( "#item_selling_UNIT" ).append( '<option value="Box">Box</option>' );
+    $( "#item_selling_UNIT" ).append( '<option value="Jar">Jar</option>' );
 
     //-------------------
 

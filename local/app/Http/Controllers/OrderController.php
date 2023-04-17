@@ -90,7 +90,7 @@ class OrderController extends Controller
     if($request->order_type==1){
        
     }else{
-      $order_id= str_replace("O","VO",$order_id);
+      $order_id= str_replace("O","MX",$order_id);
     }
 
     // START:Update code :V1: 2019-07-19 //this code for save all data in qc form as well as bulk form
@@ -145,6 +145,7 @@ class OrderController extends Controller
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repeat == 2) {
         $qcformObj->artwork_status = 1;
@@ -211,30 +212,7 @@ class OrderController extends Controller
       $opdObj->save();
 
 
-      // $mstOrderObj = new OrderMaster;
-      // $mstOrderObj->form_id = $fomr_id;
-      // $mstOrderObj->assign_userid = 0;
-      // $mstOrderObj->order_statge_id = 'ART_WORK_RECIEVED';
-      // $mstOrderObj->assigned_by = Auth::user()->id;
-      // $mstOrderObj->action_status = 1;
-      // $mstOrderObj->completed_on = date('Y-m-d');
-      // $mstOrderObj->action_mark = 1;
-      // $mstOrderObj->assigned_team = 1; //sales user
-      // $mstOrderObj->save();
-
-      // //next assin
-      // $mstOrderObj = new OrderMaster;
-      // $mstOrderObj->form_id = $fomr_id;
-      // $mstOrderObj->assign_userid = 0;
-      // $mstOrderObj->order_statge_id = 'PRODUCTION';
-      // $mstOrderObj->assigned_by = Auth::user()->id;
-      // $mstOrderObj->action_status = 0;
-      // $mstOrderObj->completed_on = date('Y-m-d');
-      // $mstOrderObj->action_mark = 1;
-      // $mstOrderObj->assigned_team = 1; //sales user
-      // $mstOrderObj->save();
-
-
+    
       // olde stage
 
 
@@ -390,6 +368,11 @@ class OrderController extends Controller
     $qcformObj->order_currency = $request->currency;
     $qcformObj->exchange_rate = $request->conv_rate;
     $qcformObj->order_fragrance = $request->order_fragrance;
+    $qcformObj->order_color = $request->order_color;
+    $qcformObj->order_composition = $request->order_composition;
+    $qcformObj->order_print_quality = $request->order_print_quality;
+    $qcformObj->mfg_location = $request->mfg_location;
+
     $qcformObj->artwork_approval_status = $request->artwork_approval_status;
     $qcformObj->dispatch_status = 1;
     if ($otStr == 'Bulk' || $request->order_repeat == 2) {
@@ -409,13 +392,7 @@ class OrderController extends Controller
     $qcformObj->artwork_start_date = date('Y-m-d');
 
     // new price 
-    $qcformObj->item_RM_Price = $request->item_RM_Price;
-    $qcformObj->item_BCJ_Price = $request->item_BCJ_Price;
-    $qcformObj->item_Label_Price = $request->item_Label_Price;
-    $qcformObj->item_Material_Price = $request->item_Material_Price;
-    $qcformObj->item_LabourConversion_Price = $request->item_LabourConversion_Price;
-    $qcformObj->item_Margin_Price = $request->item_Margin_Price;    // new price 
-    $qcformObj->price_part_status = 1;    // new price 
+   
 
     $qcformObj->save();
 
@@ -461,6 +438,22 @@ class OrderController extends Controller
 
       QCFORM::where('form_id', $fomr_id)
         ->update(['po_img_url' => 'local/public/uploads/photos/' . $filename]);
+    }
+
+    if ($request->hasfile('file_comp')) {
+      $file = $request->file('file_comp');
+      $img = Image::make($request->file('file_comp'));
+      // resize image instance
+      $img->resize(320, 240);
+
+      $extension = $file->getClientOriginalExtension(); // getting image extension
+      $filename = rand(10, 100) . Auth::user()->id . "img_file_comp" . date('Ymdhis') . '.' . $extension;
+      // insert a watermark
+      //$img->insert('public/watermark.png');
+      // save image in desired format
+      $img->save('uploads/qc_form/' . $filename);
+      QCFORM::where('form_id', $fomr_id)
+        ->update(['order_composition_img' => 'uploads/qc_form/' . $filename]);
     }
 
     //  form image upload
@@ -7600,6 +7593,8 @@ $HTML .= '
       'sp' => '<i class="fa fa-rupee-sign"></i> ' . $data_qc_arr->item_sp . "/" . $data_qc_arr->item_sp_unit,
       'orderFor' => $data_qc_arr->export_domestic == 1 ? "DOMESTIC" : "EXPORT",
       'fragrance' => $data_qc_arr->order_fragrance,
+      'order_color' => $data_qc_arr->order_color,
+      
       'orderVal' => '<i class="fa fa-rupee-sign"></i> ' . $data_qc_arr->item_sp * $data_qc_arr->item_qty,
       'sp_view' => $sp_view,
       'img_url' => optional($data_qc_arr)->pack_img_url,
@@ -11282,6 +11277,7 @@ $HTML .= '
           'order_currency' => $request->currency,
           'exchange_rate' => $request->conv_rate,
           'order_fragrance' => $request->order_fragrance,
+          'order_color' => $request->order_color,
           'modification_remarks_updatedby_lasttime' => Auth::user()->id,
           'modification_remarks' => $request->modificationRemarks,
           'item_RM_Price' => $request->item_RM_Price,
@@ -11701,6 +11697,7 @@ AyraHelp::getOrderOLDDataUpdate($formID,$update_id);
           'order_currency' => $request->currency,
           'exchange_rate' => $request->conv_rate,
           'order_fragrance' => $request->order_fragrance,
+          'order_color' => $request->order_color,
         ]);
 
       //  form image upload
@@ -12066,6 +12063,7 @@ AyraHelp::getOrderOLDDataUpdate($formID,$update_id);
           'order_currency' => $request->currency,
           'exchange_rate' => $request->conv_rate,
           'order_fragrance' => $request->order_fragrance,
+          'order_color' => $request->order_color,
         ]);
 
       //  form image upload
@@ -12435,6 +12433,7 @@ AyraHelp::getOrderOLDDataUpdate($formID,$update_id);
         'order_currency' => $request->currency,
         'exchange_rate' => $request->conv_rate,
         'order_fragrance' => $request->order_fragrance,
+        'order_color' => $request->order_color,
 
 
       ]);
@@ -15070,6 +15069,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repeat == 2) {
         $qcformObj->artwork_status = 1;
@@ -15203,6 +15203,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repea == 2) {
         $qcformObj->artwork_status = 1;
@@ -15801,6 +15802,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repeat == 2) {
         $qcformObj->artwork_status = 1;
@@ -15987,6 +15989,7 @@ public function qcformGetList_v1_fast(Request $request)
     $qcformObj->order_currency = $request->currency;
     $qcformObj->exchange_rate = $request->conv_rate;
     $qcformObj->order_fragrance = $request->order_fragrance;
+    $qcformObj->order_color = $request->order_color;
     $qcformObj->artwork_approval_status = $request->artwork_approval_status;
     $qcformObj->dispatch_status = 1;
     if ($otStr == 'Bulk' || $request->order_repea == 2) {
@@ -16789,6 +16792,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repeat == 2) {
         $qcformObj->artwork_status = 1;
@@ -16975,6 +16979,7 @@ public function qcformGetList_v1_fast(Request $request)
     $qcformObj->order_currency = $request->currency;
     $qcformObj->exchange_rate = $request->conv_rate;
     $qcformObj->order_fragrance = $request->order_fragrance;
+    $qcformObj->order_color = $request->order_color;
     $qcformObj->dispatch_status = 1;
     if ($otStr == 'Bulk' || $request->order_repea == 2) {
       $qcformObj->artwork_status = 1;
@@ -17684,6 +17689,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repeat == 2) {
         $qcformObj->artwork_status = 1;
@@ -17817,6 +17823,7 @@ public function qcformGetList_v1_fast(Request $request)
       $qcformObj->order_currency = $request->currency;
       $qcformObj->exchange_rate = $request->conv_rate;
       $qcformObj->order_fragrance = $request->order_fragrance;
+      $qcformObj->order_color = $request->order_color;
       $qcformObj->dispatch_status = 1;
       if ($otStr == 'Bulk' || $request->order_repea == 2) {
         $qcformObj->artwork_status = 1;

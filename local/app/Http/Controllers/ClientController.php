@@ -339,6 +339,8 @@ class ClientController extends Controller
    
     $phoneStar = $request->phone;
     $phone = str_replace(' ', '', $phoneStar);
+    $phoneStar_2 = $request->phone_2;
+    $phone_2 = str_replace(' ', '', $phoneStar_2);
     
     $email = $request->email;
     $brand = $request->brand;
@@ -408,6 +410,7 @@ class ClientController extends Controller
     $client_obj->firstname = trim($request->name);
     $client_obj->email = $request->email;
     $client_obj->phone = $phone;
+    $client_obj->phone_2 = $phone_2;
     $client_obj->company = isset($request->company) ? $request->company : '';
     $client_obj->city = 12;
     $client_obj->country = 1;
@@ -444,19 +447,19 @@ class ClientController extends Controller
   );
 
   $affected = DB::table('clients')
-  ->where('id', $client_obj->client_id)
+  ->where('id', $client_obj->id)
   ->update([
     'lead_statge' => 1,
 
   ]);
 
 
-  $txtLeadID = $client_obj->client_id;
+  $txtLeadID = $client_obj->id;
  
 
   DB::table('clients_brands')
   ->updateOrInsert(
-      ['client_id' => $txtLeadID, 'brand' => $request->brand],
+      ['client_id' => $client_obj->id],
       ['brand' => $request->brand]
   );
 

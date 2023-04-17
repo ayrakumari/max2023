@@ -33,14 +33,15 @@
                 <div class="m-portlet__body">
                     <div class="m-form__section m-form__section--first">
                         <div class="form-group m-form__group row">
-                            <div class="col-lg-4 m-form__group-sub">
+                            <div class="col-lg-3 m-form__group-sub">
                                 <label class="form-control-label">* Company:</label>
                                 <input type="text" class="form-control m-input" name="company" placeholder="Enter Company">
                             </div>
-                            <div class="col-lg-4 m-form__group-sub">
+                            <div class="col-lg-3 m-form__group-sub">
                                 <label class="form-control-label">Brand:</label>
                                 <input type="text" class="form-control m-input" name="brand" placeholder="Enter Brand">
                             </div>
+                            
                             <div class="col-lg-4 m-form__group-sub">
                                 <label class="form-control-label"> GSTIN:</label>
                                 <input type="text" class="form-control m-input" name="gst" placeholder="Enter GSTIN">
@@ -50,15 +51,19 @@
                     <!-- name email phone -->
                     <div class="m-form__section m-form__section--first">
                         <div class="form-group m-form__group row">
-                            <div class="col-lg-4 m-form__group-sub">
+                            <div class="col-lg-3 m-form__group-sub">
                                 <label class="form-control-label">* Name:</label>
                                 <input type="text" class="form-control m-input" name="name" placeholder="Enter Name">
                             </div>
-                            <div class="col-lg-4 m-form__group-sub">
+                            <div class="col-lg-3 m-form__group-sub">
                                 <label class="form-control-label">*Phone:</label>
                                 <input id="m_inputmask_6" type="text" class="form-control m-input" name="phone" placeholder="Enter Phone">
                             </div>
-                            <div class="col-lg-4 m-form__group-sub">
+                            <div class="col-lg-3 m-form__group-sub">
+                                <label class="form-control-label">*Alternate Phone:</label>
+                                <input type="text" id="m_inputmask_6A1" class="form-control m-input" }" name="phone_2" placeholder="Enter proper phone">
+                            </div>
+                            <div class="col-lg-3 m-form__group-sub">
                                 <label class="form-control-label"> Email:</label>
                                 <input type="text" class="form-control m-input" name="email" placeholder="Enter Email">
                             </div>

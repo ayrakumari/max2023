@@ -27,9 +27,9 @@
          </div>
       </div>
       <?php
-      
 
-   
+
+
 
       use App\Helpers\AyraHelp;
 
@@ -57,7 +57,7 @@
          ->where('client_id', $leadDataArr->id)
          ->get();
 
-         $leadCArrDataBrandArr = DB::table('clients_brands')
+      $leadCArrDataBrandArr = DB::table('clients_brands')
          ->where('is_deleted', 0)
          ->where('client_id', $leadDataArr->id)
          ->get();
@@ -67,7 +67,7 @@
 
       //   print_r($leadDataArr);
       //   die;
-      
+
 
       ?>
       <style>
@@ -125,7 +125,7 @@
 
                            </div>
                         </div>
-                    
+
 
                      </div>
                   </div>
@@ -144,7 +144,7 @@
                               ?>
                            </select>
 
-                          
+
                         </div>
                         <div class="col-lg-3 m-form__group-sub">
                            <label>Repeat Order:</label>
@@ -551,7 +551,7 @@
                               </div>
                               <div class="col-lg-2 m-form__group-sub">
                                  <label class="form-control-label"> Size:</label>
-                                 <input type="number" class="form-control m-input" id="item_size" name="item_size" placeholder="Size">
+                                 <input type="text" class="form-control m-input" id="item_size" name="item_size" placeholder="Size">
 
 
                               </div>
@@ -613,12 +613,12 @@
                            </div>
                         </div>
 
-                      
+
                         <div class="m-form__section m-form__section--first">
                            <div class="form-group m-form__group row">
                               <div class="col-lg-3 m-form__group-sub">
                                  <label class="form-control-label"> Selling Price Per(₹):</label>
-                                 <input style="background-color:#c1c1c1" type="number"  class="form-control m-input" id="item_selling_price" name="item_selling_price" placeholder="">
+                                 <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_selling_price" name="item_selling_price" placeholder="">
                               </div>
                               <div class="col-lg-2 m-form__group-sub">
                                  <label class="form-control-label"> Unit:</label>
@@ -657,15 +657,19 @@
                            </div>
                         </div>
                         <div class="row">
-                           <div class="col-xl-5">
+                           <div class="col-xl-6">
                               <div class="m-form__section m-form__section--first">
                                  <div class="form-group m-form__group row">
-                                    <div class="col-lg-6 m-form__group-sub">
+                                    <div class="col-lg-3 m-form__group-sub">
                                        <label class="form-control-label"> Fragrance</label>
                                        <input type="text" class="form-control m-input" id="order_fragrance" name="order_fragrance" placeholder="Fragrance">
                                     </div>
+                                    <div class="col-lg-3 m-form__group-sub">
+                                       <label class="form-control-label"> Color</label>
+                                       <input type="text" class="form-control m-input" id="order_color" name="order_color" placeholder="Color">
+                                    </div>
 
-                                    <div class="col-lg-6 m-form__group-sub">
+                                    <div class="col-lg-4 m-form__group-sub">
                                        <label class="form-control-label">Order For</label>
                                        <select name="order_crated_by" id="order_crated_by" class="form-control">
                                           <?php
@@ -721,17 +725,68 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="col-md-3">
+                           <div class="col-md-2">
                               <div id='img_contain'>
-                                 <img id="blah" width="180" height="150" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title='' />
+                                 <img id="blah" width="90" height="75" align='middle' src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png" alt="your image" title='' />
                               </div>
                            </div>
 
-                         
+
 
 
 
                         </div>
+                        <!-- composition and payment  -->
+                        <hr style="border:1px solid #CCC">
+                        <div class="row">
+                           <div class="col-xl-5">
+                              <div class="m-form__section m-form__section--first">
+                                 <div class="form-group m-form__group row">
+                                    <div class="col-lg-4 m-form__group-sub">
+                                       <label class="form-control-label"> Composition</label>
+                                       <input type="text" class="form-control m-input" id="order_composition" name="order_composition" placeholder="Composition">
+                                    </div>
+                                    <div class="col-lg-8 m-form__group-sub">
+                                       <label class="form-control-label"> Comp.Images</label>
+                                       <div class="custom-file">
+                                          <input type="file" name="file_comp" id="inputGroupFile012" class="custom-file-input">
+                                          <label class="custom-file-label" for="customFile">Choose file</label>
+                                       </div>
+                                    </div>
+
+
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-xl-7">
+                           <div class="m-form__section m-form__section--first">
+                                 <div class="form-group m-form__group row">
+                                    <div class="col-lg-4 m-form__group-sub">
+                                       <label class="form-control-label"> Printing Quality</label>
+                                       <select name="order_print_quality" id="order_print_quality" class="form-control">
+                                       <option value="Metallic">Metallic </option>
+                                       <option value="Matt">Matt </option>
+                                       <option value="Gloss">Gloss </option>
+                                       <option value="Metallic Matt">Metallic Matt </option>
+                                       <option value="Others">Others </option>
+                                       </select>
+
+                                    </div>
+                                    <div class="col-lg-8 m-form__group-sub">
+                                       <label class="form-control-label"> Manufacturing Location</label>
+                                       <select name="mfg_location" id="mfg_location" class="form-control">
+                                       <option selected value="Maxnova">Maxnova </option>
+                                       <option value="Bioatom">Bioatom </option>
+                                       <option value="AM Enterprise">AM Enterprise </option>                                      
+                                       </select>
+                                    </div>
+
+
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- composition and payment  -->
 
                         {{-- ajaja layout chnage --}}
                         <br>
@@ -1595,7 +1650,7 @@
                                  <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp_PL" name="item_batch_mrp_PL" placeholder="">
                               </div>
                               <div class="col-lg-3 m-form__group-sub">
-                                 <label class="form-control-label"> MRP per ML(₹):</label>
+                                 <label class="form-control-label"> MRP per unit(₹):</label>
                                  <input style="background-color:#c1c1c1" type="number" class="form-control m-input" id="item_batch_mrp_ml_PL" name="item_batch_mrp_ml_PL" placeholder="">
                               </div>
                            </div>

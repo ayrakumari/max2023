@@ -13770,7 +13770,7 @@ public static function ScriptForOrderUpdate(){
         $uname = 'O';
         $num = $max_id;
         $str_length = 4;
-        $prifix = "23-";
+        $prifix = "24-";
         $sid_code = $uname . "#" . $prifix . substr("0000{$num}", -$str_length);
         // $sid_code = $prifix . substr("0000{$num}", -$str_length);
         return $sid_code;
@@ -13789,7 +13789,7 @@ public static function ScriptForOrderUpdate(){
         $uname = 'VO';
         $num = $max_id;
         $str_length = 4;
-        $prifix = "23-";
+        $prifix = "24-";
         $sid_code = $uname . "#" . $prifix . substr("0000{$num}", -$str_length);
         // $sid_code = $prifix . substr("0000{$num}", -$str_length);
         return $sid_code;
@@ -14820,7 +14820,7 @@ public static function ScriptForOrderUpdate(){
 
         $uname = strtoupper(AyraHelp::getUserPrefix(Auth::user()->id));
         $uname = substr($uname, 0, 3);
-        $yearDigit = "23";
+        $yearDigit = "24";
         $num = $max_id;
         $str_length = 4;
         $sid_code = $uname . "-" . $yearDigit . "-" . substr("0000{$num}", -$str_length);
@@ -14833,7 +14833,7 @@ public static function ScriptForOrderUpdate(){
 
         $uname = strtoupper(AyraHelp::getUserPrefix($user_id));
         $uname = substr($uname, 0, 3);
-        $yearDigit = "23";
+        $yearDigit = "24";
         $num = $max_id;
         $str_length = 4;
         $sid_code = $uname . "-" . $yearDigit . "-" . substr("0000{$num}", -$str_length);
