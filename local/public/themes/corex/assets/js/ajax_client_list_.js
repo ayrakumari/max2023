@@ -3924,7 +3924,7 @@ $( '#btnClientNotes' ).click( function ()
           {
 
 
-            window.location.href = BASE_URL + '/client'
+            window.location.href = BASE_URL + '/client.notes'
 
           }
         } );
@@ -25972,14 +25972,15 @@ var DatatablesSearchOptionsAdvancedSearchNotesDataList = function ()
           url: BASE_URL + '/getClientsNotesList',
           type: "POST",
           data: {
-            columnsDef: [ "RecordID", "client_id", "client_name", "client_company", "message", "sh_on", "created_by", "created_on", "Status", "Actions" ],
+            columnsDef: [  "client_id", "client_name", "client_company", "message", "sh_on", "created_by", "created_on", "Status", "Actions" ],
             '_token': $( 'meta[name="csrf-token"]' ).attr( 'content' )
           }
         },
         columns: [
           {
-            data: "RecordID"
+            data: "sh_on"
           },
+         
           {
             data: "client_name"
           },
@@ -25989,9 +25990,7 @@ var DatatablesSearchOptionsAdvancedSearchNotesDataList = function ()
           {
             data: "message"
           },
-          {
-            data: "sh_on"
-          },
+         
           {
             data: "created_by"
           },
@@ -26003,51 +26002,7 @@ var DatatablesSearchOptionsAdvancedSearchNotesDataList = function ()
             data: "Actions"
           }
         ],
-        initComplete: function ()
-        {
-          this.api().columns().every( function ()
-          {
-
-            switch ( this.title() )
-            {
-
-              case "Status":
-
-                var a = {
-                  1: {
-                    title: "RAW",
-                    class: "m-badge--brand"
-                  },
-                  2: {
-                    title: "LEAD",
-                    class: " m-badge--metal"
-                  },
-                  3: {
-                    title: "QUALIFIED",
-                    class: " m-badge--primary"
-                  },
-                  4: {
-                    title: "SAMPLING",
-                    class: " m-badge--success"
-                  },
-                  5: {
-                    title: "CUSTOMER",
-                    class: " m-badge--info"
-                  },
-                  6: {
-                    title: "LOST",
-                    class: " m-badge--danger"
-                  }
-
-                };
-                this.data().unique().sort().each( function ( t, e )
-                {
-                  $( '.m-input[data-col-index="6"]' ).append( '<option value="' + t + '">' + a[ t ].title + "</option>" )
-                } );
-                break;
-            }
-          } )
-        },
+       
         columnDefs: [ {
           targets: -1,
           title: "Actions",
@@ -26070,24 +26025,7 @@ var DatatablesSearchOptionsAdvancedSearchNotesDataList = function ()
                                                         `
           }
         },
-        {
-          targets: 6,
-          render: function ( a, t, e, n )
-          {
-            var i = {
-              1: {
-                title: "UNREAD",
-                class: "m-badge--danger"
-              },
-              2: {
-                title: "READ",
-                class: " m-badge--success"
-              },
-
-            };
-            return void 0 === i[ a ] ? a : '<span class="m-badge ' + i[ a ].class + ' m-badge--wide">' + i[ a ].title + "</span>"
-          }
-        }
+        
         ]
       } ), $( "#m_search" ).on( "click", function ( t )
       {

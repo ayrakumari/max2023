@@ -738,31 +738,38 @@
                         </div>
                         <!-- composition and payment  -->
                         <hr style="border:1px solid #CCC">
+                        <div class="m-demo ">
                         <div class="row">
-                           <div class="col-xl-5">
-                              <div class="m-form__section m-form__section--first">
-                                 <div class="form-group m-form__group row">
-                                    <div class="col-lg-4 m-form__group-sub">
-                                       <label class="form-control-label"> Composition</label>
-                                       <input type="text" class="form-control m-input" id="order_composition" name="order_composition" placeholder="Composition">
+                           <div class="col-xl-8">
+                              <div class="row">
+                                    <div class="col-xl-2">
+                                    <label class="form-control-label"> Refundable</label>
+                                    <input class="form-control"  type="number" name="txtRefAmt" id="txtRefAmt"">
                                     </div>
-                                    <div class="col-lg-8 m-form__group-sub">
-                                       <label class="form-control-label"> Comp.Images</label>
-                                       <div class="custom-file">
-                                          <input type="file" name="file_comp" id="inputGroupFile012" class="custom-file-input">
-                                          <label class="custom-file-label" for="customFile">Choose file</label>
-                                       </div>
+                                    <div class="col-xl-3">
+                                    <label class="form-control-label">  Plate/Cylinder</label>
+                                    <input class="form-control"  type="number" name="txtPlateAmt" id="txtPlateAmt">
                                     </div>
-
-
-                                 </div>
+                                    <div class="col-xl-2">
+                                    <label class="form-control-label">  PM AMT</label>
+                                    <input class="form-control"  type="number" name="txtPMAmt" id="txtPMAmt">
+                                    </div>
+                                    <div class="col-xl-2">
+                                    <label class="form-control-label">  App. AMT</label>
+                                    <input class="form-control"  type="number" name="txtApproalAmt" id="txtApproalAmt">
+                                    </div>
+                                    <div class="col-xl-3">
+                                    <label class="form-control-label">  ONE TIME COST</label>
+                                    <input class="form-control" readonly style="background-color:#035496;color:#FFFF"  type="number" name="txtONETIMECOST" id="txtONETIMECOST">
+                                    </div>
                               </div>
+                             
+
                            </div>
-                           <div class="col-xl-7">
-                           <div class="m-form__section m-form__section--first">
-                                 <div class="form-group m-form__group row">
-                                    <div class="col-lg-4 m-form__group-sub">
-                                       <label class="form-control-label"> Printing Quality</label>
+                           <div class="col-xl-4">
+                           <div class="row">
+                                    <div class="col-xl-6">
+                                       <label class="form-control-label"> Print Quality</label>
                                        <select name="order_print_quality" id="order_print_quality" class="form-control">
                                        <option value="Metallic">Metallic </option>
                                        <option value="Matt">Matt </option>
@@ -772,8 +779,8 @@
                                        </select>
 
                                     </div>
-                                    <div class="col-lg-8 m-form__group-sub">
-                                       <label class="form-control-label"> Manufacturing Location</label>
+                                    <div class="col-xl-6">
+                                       <label class="form-control-label">MFG Location</label>
                                        <select name="mfg_location" id="mfg_location" class="form-control">
                                        <option selected value="Maxnova">Maxnova </option>
                                        <option value="Bioatom">Bioatom </option>
@@ -785,6 +792,7 @@
                                  </div>
                               </div>
                            </div>
+                        </div>
                         </div>
                         <!-- composition and payment  -->
 
@@ -1655,6 +1663,37 @@
                               </div>
                            </div>
                         </div>
+
+                         <!--begin::Preview-->
+                         <div class="m-demo ">
+                           <div class="m-demo__preview">
+                              <div class="m-list-search">
+                                 <div class="m-list-search__results">
+                                    <span style="color:#035496" class="m-list-search__result-category m-list-search__result-category--first">
+                                       Composition
+                                    </span>
+                                    {{-- tag --}}
+                                    <div class="row">
+                                       <div class="col-md-8">
+                                       <label class="form-control-label"> Composition</label>
+                                          <textarea name="order_composition" class="form-control" id="" cols="1" rows="2"></textarea>
+
+                                       </div>
+                                       <div class="col-md-4">
+                                       <label class="form-control-label"> Comp.Images</label>
+                                       <div class="custom-file">
+                                          <input type="file" name="file_comp" id="inputGroupFile012" class="custom-file-input">
+                                          <label class="custom-file-label" for="customFile">Choose file</label>
+                                       </div>
+
+                                       </div>
+                                    </div>
+                                    {{-- tag --}}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!--end::Preview-->
 
 
                         <!--begin::Preview-->

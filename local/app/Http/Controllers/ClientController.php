@@ -1753,8 +1753,12 @@ class ClientController extends Controller
       $client_arr = ClientNote::get();
     }
     if ($user_role == 'SalesUser') {
-      $client_arr = ClientNote::where('user_id', Auth::user()->id)->get();
+      $client_arr = ClientNote::where('is_new',1)->where('user_id', Auth::user()->id)->orderBy('date_schedule', 'ASC')->get();
     }
+  //  echo "<pre>";
+
+  //   print_r($client_arr);
+  //   die;
 
 
 
@@ -1787,7 +1791,7 @@ class ClientController extends Controller
 
     $JSON_Data = json_encode($data_arr);
     $columnsDefault = [
-      'RecordID'     => true,
+      
       'client_id'      => true,
       'client_name'      => true,
       'client_company'      => true,
@@ -1799,7 +1803,7 @@ class ClientController extends Controller
       'Actions'      => true,
     ];
 
-    $this->DataGridResponse($JSON_Data, $columnsDefault);
+    $this->DataGridResponse_NEW($JSON_Data, $columnsDefault);
   }
 
 
@@ -3403,6 +3407,9 @@ class ClientController extends Controller
     } else {
       $sh_date = null;
     }
+
+    ClientNote::where('clinet_id', $request->user_id)
+    ->update(['is_new' => 0]);
 
     $clienNote = new ClientNote;
     $clienNote->clinet_id = $request->user_id;

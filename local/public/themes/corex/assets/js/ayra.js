@@ -36,6 +36,37 @@ $( '#item_qty_old' ).focusout( function ()
   }
 } );
 
+$( '#txtRefAmt' ).focusout( function ()
+{
+  amtConst();  
+
+} );
+$( '#txtPlateAmt' ).focusout( function ()
+{
+  amtConst();  
+
+} );
+$( '#txtPMAmt' ).focusout( function ()
+{
+  amtConst();  
+
+} );
+$( '#txtApproalAmt' ).focusout( function ()
+{
+  amtConst();  
+
+} );
+
+
+function amtConst(){
+  var txtPlateAmt=parseInt($('#txtPlateAmt').val());
+  var txtRefAmt=parseInt($('#txtRefAmt').val());
+  var txtPMAmt=parseInt($('#txtPMAmt').val());
+  var txtApproalAmt=parseInt($('#txtApproalAmt').val());
+
+  $('#txtONETIMECOST').val(txtPlateAmt+txtRefAmt+txtPMAmt+txtApproalAmt);
+
+}
 
 //LeadSampleAddModelSalesLead
 function LeadSampleAddModelSalesLead( QUERY_ID )

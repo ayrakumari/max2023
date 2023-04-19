@@ -49,11 +49,11 @@
 														<table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_NotesList">
 															<thead>
 																<tr>
-																	<th>ID</th>
+																<th>Schedule</th>
 																	<th>Name</th>
 																	<th>Company</th>
 																	<th>Message</th>
-																	<th>Schedule</th>
+																	
 																	<th>Created By</th>
 																	<th>Created On</th>
 

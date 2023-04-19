@@ -409,6 +409,12 @@
 
 
                            - </li>
+                           <li class="m-menu__item " aria-haspopup="true"><a href="{{route('client.notes')}}" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+                              <span class="m-menu__link-text">Client Notes</span>
+                           </a>
+                        </li>
+                   
+                           
 
                         <?php
                         if (Auth::user()->id == 1 || Auth::user()->id == 90 || Auth::user()->id == 171) {

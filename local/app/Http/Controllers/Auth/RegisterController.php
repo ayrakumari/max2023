@@ -755,11 +755,12 @@ class RegisterController extends Controller
   public function getGMARTData()
   {
     
-    $start_date = date("d-M-Y", strtotime('-3 day'));
-    $start_dateA = date("Y-m-d", strtotime('-1 day'));
-    $stop_date = date("d-M-Y");
+    $start_date = date("d-M-Y00:00:00", strtotime('-3 day'));
+   
+    $stop_date = date("d-M-Y00:00:00");
 
-    $url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
+    //$url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
+    $url='https://mapi.indiamart.com/wservce/crm/crmListing/v2/?glusr_crm_key=gIhfk7cDWoxdqBeFv+sb7kevHW7O1Axy&start_time='.$start_date.'&end_time='.$stop_date;
    
 
     $data = file_get_contents($url); // put the contents of the file into a variable
@@ -778,46 +779,46 @@ class RegisterController extends Controller
         $originalDate = $row->DATE_TIME_RE;
          $newDate = date("Y-m-d H:i:s", strtotime($originalDate));
         //$newDate = date('Y-m-d H:i:s');
-        $data_arr = DB::table('indmt_data')->where('QUERY_ID', $row->QUERY_ID)->first();
+        $data_arr = DB::table('indmt_data')->where('QUERY_ID', $row->UNIQUE_QUERY_ID)->first();
         if ($data_arr == null) {
 
           DB::table('indmt_data')->insert([
 
 
-            'SENDERNAME' => $row->SENDERNAME,
-            'SENDEREMAIL' => $row->SENDEREMAIL,
-            'SUBJECT' => $row->SUBJECT,
-            'DATE_TIME_RE' => $row->DATE_TIME_RE,
-            'GLUSR_USR_COMPANYNAME' => $row->GLUSR_USR_COMPANYNAME,
-            'MOB' => $row->MOB,
-            'COUNTRY_FLAG' => $row->COUNTRY_FLAG,
-            'ENQ_MESSAGE' => $row->ENQ_MESSAGE,
-            'ENQ_ADDRESS' => $row->ENQ_ADDRESS,
-            'ENQ_CITY' => $row->ENQ_CITY,
-            'ENQ_STATE' => $row->ENQ_STATE,
-            'PRODUCT_NAME' => $row->PRODUCT_NAME,
-            'COUNTRY_ISO' => $row->COUNTRY_ISO,
-            'EMAIL_ALT' => $row->EMAIL_ALT,
-            'MOBILE_ALT' => $row->MOBILE_ALT,
-            'PHONE' => $row->PHONE,
-            'PHONE_ALT' => $row->PHONE_ALT,
-            'IM_MEMBER_SINCE' => $row->IM_MEMBER_SINCE,
-            'QUERY_ID' => $row->QUERY_ID,
-            'QTYPE' => $row->QTYPE,
-            'ENQ_CALL_DURATION' => $row->ENQ_CALL_DURATION,
-            'ENQ_RECEIVER_MOB' => $row->ENQ_RECEIVER_MOB,
-            'data_source' => 'INDMART-9999955922@API_1',
+            'SENDERNAME' => $row->SENDER_NAME,
+            'SENDEREMAIL' => $row->SENDER_EMAIL,
+            'SUBJECT' => '',
+            'DATE_TIME_RE' => $row->QUERY_TIME,
+            'GLUSR_USR_COMPANYNAME' => $row->SENDER_COMPANY,
+            'MOB' => $row->SENDER_MOBILE,
+            'COUNTRY_FLAG' => '',
+            'ENQ_MESSAGE' => $row->QUERY_MESSAGE,
+            'ENQ_ADDRESS' => $row->SENDER_ADDRESS,
+            'ENQ_CITY' => $row->SENDER_CITY,
+            'ENQ_STATE' => $row->SENDER_STATE,
+            'PRODUCT_NAME' => $row->QUERY_PRODUCT_NAME,
+            'COUNTRY_ISO' => $row->SENDER_COUNTRY_ISO,
+            'EMAIL_ALT' => $row->SENDER_EMAIL_ALT,
+            'MOBILE_ALT' => $row->SENDER_MOBILE_ALT,
+            'PHONE' => '',
+            'PHONE_ALT' =>'',
+            'IM_MEMBER_SINCE' => '',
+            'QUERY_ID' => $row->UNIQUE_QUERY_ID,
+            'QTYPE' => $row->QUERY_TYPE,
+            'ENQ_CALL_DURATION' => $row->CALL_DURATION,
+            'ENQ_RECEIVER_MOB' => $row->RECEIVER_MOBILE,
+            'data_source' => 'INDMART-1@API_1',
             'data_source_ID' => 1,
             'created_at' => $newDate,
             'DATE_TIME_RE_SYS' => $newDate,
-            'assign_to' => 134,
+            'assign_to' =>10,
 
           ]);
           //===========================
           //$TLeads = DB::table('indmt_data')->where('data_source','INDMART-9999955922@API_1')->whereDate('created_at','>=',$start_dateA)->get();   
           $TLeads = 0;        
 
-          $this->LeadTally('INDMART-9999955922@API_1',$row->TOTAL_COUNT,$TLeads);
+          $this->LeadTally('INDMART-1@API_1',$row->TOTAL_RECORDS,$TLeads);
           //===========================
         }
       }
@@ -825,7 +826,7 @@ class RegisterController extends Controller
 
     //----------------------------------
     $tday = date('Y-m-d');
-    $data_arr = DB::table('leadcron_run_log')->where('lrun_day_date', $tday)->where('api_details', 'INDMART-9999955922@API_1')->first();
+    $data_arr = DB::table('leadcron_run_log')->where('lrun_day_date', $tday)->where('api_details', 'INDMART-1@API_1')->first();
     if ($data_arr == null) {
 
       DB::table('leadcron_run_log')->insert(
@@ -833,14 +834,14 @@ class RegisterController extends Controller
 
           'lrun_day_date' => date('Y-m-d'),
           'last_update' => date('Y-m-d H:i:s'),
-          'api_details' => 'INDMART-9999955922@API_1',
+          'api_details' => 'INDMART-1@API_1',
 
         ]
       );
     } else {
       $arr = DB::table('leadcron_run_log')
         ->where('lrun_day_date', $tday)
-        ->where('api_details', 'INDMART-9999955922@API_1')
+        ->where('api_details', 'INDMART-1@API_1')
         ->update(['last_update' => date('Y-m-d H:i:s')]);
     }
     //-------------------------------------------
