@@ -58,8 +58,8 @@ $this->LoggedActicty(
 //sendEmailSendgridWaysBulk
 protected function sendEmailSendgridWaysBulk($to ,$subLineM,$body){
   require 'vendor/autoload.php';
-  //$Apikey = "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";
-  $Apikey = "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";
+  //$Apikey = AyraHelp::APISendKey();
+  $Apikey = AyraHelp::APISendKey();
 
   // echo $to;
   // echo $subLineM;
@@ -114,26 +114,22 @@ protected function sendEmailSendgridWaysBulk($to ,$subLineM,$body){
 
 protected function sendEmailSendgridWays($to ,$subLineM,$body,$email_template){
   require 'vendor/autoload.php';
-  $Apikey = "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";
-  // echo $to;
-  // echo $subLineM;
-  // print_r($body);
-  // print_r($email_template);
-
+  $Apikey = AyraHelp::APISendKey();
+  
   
   
 
     $email = new \SendGrid\Mail\Mail();
-    $email->setFrom("info@max.net", "MAX");
+    $email->setFrom("info@maxnovahealthcare.com", "MAX");
     $email->setSubject($subLineM);
-    $email->addTo($to, '');
+    $email->addTo('ajay.kumardhubi@gmail.com', '');
     // $email->addTo('bointlresearch@gmail.com', 'Anitha');
     // $email->addCc('pooja@max.net','Pooja Gupta');
-    $email->addCc('nitika@max.net', 'Admin');
-    $email->addCc('pooja@max.net', 'Pooja Gupta');
+    // $email->addCc('nitika@max.net', 'Admin');
+    // $email->addCc('pooja@max.net', 'Pooja Gupta');
   //  $email->addCc('anujranaTemp@max.net', 'Anuj Rana');
     // $email->addTo('bointldev@gmail.com', 'Ajay kumar');
-    $email->addBcc('bointldev@gmail.com', 'Ajay');
+    $email->addBcc('mayank@jmac.co.in', 'Ajay');
     $email->addContent(
       "text/html",
       $body
@@ -141,13 +137,10 @@ protected function sendEmailSendgridWays($to ,$subLineM,$body,$email_template){
     $sendgrid = new \SendGrid($Apikey);
     try {
       $response = $sendgrid->send($email);
-      // print $response->statusCode() . "\n";
-      // print_r($response->headers());
-      // print $response->body() . "\n";
-      // $affected = DB::table('indmt_data')
-      //         ->where('QUERY_ID', $rows->QUERY_ID)
-      //         ->update(['email_sent' => 1]);
-      //sms
+      print $response->statusCode() . "\n";
+      print_r($response->headers());
+      print $response->body() . "\n";
+      
 
 
 
@@ -164,7 +157,7 @@ protected function sendEmailSendgridWays($to ,$subLineM,$body,$email_template){
 }
 protected function sendEmailSendgridWaysToClient($to ,$subLineM,$body,$email_template){
   require 'vendor/autoload.php';
-  $Apikey = "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";
+  $Apikey = AyraHelp::APISendKey();
   // echo $to;
   // echo $subLineM;
   // print_r($body);

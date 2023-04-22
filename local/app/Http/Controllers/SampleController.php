@@ -1505,7 +1505,7 @@ class SampleController extends Controller
         ///send email to
 
         require 'vendor/autoload.php';
-        $Apikey = "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";
+        $Apikey = AyraHelp::APISendKey();
         // echo $to;
         // echo $subLineM;
         // print_r($body);
@@ -1639,7 +1639,7 @@ class SampleController extends Controller
         ///send email to
 
         require 'vendor/autoload.php';
-        $Apikey = "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";
+        $Apikey = AyraHelp::APISendKey();
         // echo $to;
         // echo $subLineM;
         // print_r($body);

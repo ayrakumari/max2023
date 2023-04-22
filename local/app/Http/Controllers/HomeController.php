@@ -436,7 +436,7 @@ public function getRMData($restaurant)
     echo $HTML;
     if ($chkEmail == 1) {
       require 'vendor/autoload.php';
-      $Apikey = "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";
+      $Apikey = AyraHelp::APISendKey();
       $subTitle = "Date :" . $dateme . "- " . $datemeTo;
       $subLineM = "Lead Assined or Claim Count Saleswise Report " . ":" . $subTitle;
 
@@ -543,7 +543,7 @@ public function getRMData($restaurant)
     echo $HTML;
     if ($chkEmail == 1) {
       require 'vendor/autoload.php';
-      $Apikey = "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";
+      $Apikey = AyraHelp::APISendKey();
       $subTitle = "Date :" . $dateme . "- " . $datemeTo;
       $subLineM = "Samples Count Saleswise Report " . ":" . $subTitle;
 
@@ -696,8 +696,7 @@ public function getRMData($restaurant)
     echo $HTML;
     if ($chkEmail == 1) {
       require 'vendor/autoload.php';
-      $Apikey = "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";
-      // $Apikey = "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";
+      $Apikey = AyraHelp::APISendKey();
       $subTitle = "Date :" . $dateme . "- " . $datemeTo;
       $subLineM = "Order Values Saleswise Report " . ":" . $subTitle;
 
@@ -863,7 +862,7 @@ public function getRMData($restaurant)
     echo $HTML;
     if ($chkEmail == 1) {
       require 'vendor/autoload.php';
-      $Apikey = "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";
+      $Apikey = AyraHelp::APISendKey();
       $subTitle = "Date :" . $dateme . "- " . $datemeTo;
       $subLineM = "Payment Received Saleswise Report " . ":" . $subTitle;
 
@@ -1062,8 +1061,7 @@ public function getRMData($restaurant)
     //also with all user 
     //--start
     require 'vendor/autoload.php';
-    // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
     $from = date('Y-m-01');
@@ -1724,7 +1722,7 @@ public function getRMData($restaurant)
     //  send email report 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
     $fromA = date('Y-m-01');
@@ -2690,7 +2688,7 @@ public function getRMData($restaurant)
     //send email 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
 
@@ -2807,7 +2805,7 @@ public function getRMData($restaurant)
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
 
 
@@ -2959,7 +2957,7 @@ public function getRMData($restaurant)
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
 
 
     $subTitle = "Date :" . $from . "- " . $to . " . Request By:" . Auth::user()->name;
@@ -3541,7 +3539,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
 
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$from = "2021-06-01";
     //$to = "2021-06-30";
 
@@ -3651,7 +3649,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     // $Apikey = "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";
     //email
@@ -3810,7 +3808,7 @@ $HTML .= '</table>';
     //email template
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
     $subTitle = "Date :" . $today_Date;
     $subLineM = "Previous Day Lead Details" . ":" . $subTitle;
@@ -3950,7 +3948,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
 
     //$sent_toEmail="bointldev@gmail.com";
@@ -4070,7 +4068,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
     //$sent_toEmail="bointldev@gmail.com";
     //email
@@ -4241,7 +4239,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
     $today_Date = date('Y-m-d');
@@ -4375,7 +4373,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
     $today_Date = date('Y-m-d');
@@ -4507,7 +4505,7 @@ $HTML .= '</table>';
     //  send email report 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
 
@@ -4633,7 +4631,7 @@ $HTML .= '</table>';
     //  send email report 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
 
     //$sent_toEmail="bointldev@gmail.com";
@@ -4927,7 +4925,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
     //$sent_toEmail="bointldev@gmail.com";
     //email
@@ -5135,7 +5133,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     // $Apikey = "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";
     //$sent_toEmail="bointldev@gmail.com";
     //email
@@ -5299,7 +5297,7 @@ $HTML .= '</table>';
 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
     //$sent_toEmail="bointldev@gmail.com";
     //email
     $today_Date = date('Y-m-d');
@@ -5617,7 +5615,7 @@ $HTML .= '</table>';
     //email 
     require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
 
     $users = DB::table('indmt_data')->where('SENDEREMAIL', '!=', '')->where('created_at', '>=', '2020-09-09')->where('email_sent', 0)->where('duplicate_lead_status', 0)->get();
 

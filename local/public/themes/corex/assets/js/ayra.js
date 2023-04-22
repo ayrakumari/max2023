@@ -67,6 +67,18 @@ function amtConst(){
   $('#txtONETIMECOST').val(txtPlateAmt+txtRefAmt+txtPMAmt+txtApproalAmt);
 
 }
+$( '#item_batch_mrp_PL' ).focusout( function ()
+{
+  var item_size=$('#item_size').val();
+  var lastItem = item_size.split("X").pop();
+  //console.log(lastItem); // three
+  var mrp=$(this).val();
+
+  $('#item_batch_mrp_ml_PL').val(mrp/lastItem);
+
+} );
+
+
 
 //LeadSampleAddModelSalesLead
 function LeadSampleAddModelSalesLead( QUERY_ID )

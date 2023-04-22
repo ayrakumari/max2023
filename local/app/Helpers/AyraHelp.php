@@ -45,7 +45,9 @@ class AyraHelp
 {
 
    
-    
+    public static function APISendKey(){
+        return "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";
+    }
 
     //online2OfflineSalesInvoiceRequestMerge
     public static function online2OfflineSalesInvoiceRequestMerge()

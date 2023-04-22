@@ -1,6 +1,6 @@
 require 'vendor/autoload.php';
     // $Apikey="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";
-    $Apikey = "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";
+    $Apikey = AyraHelp::APISendKey();
 
     
 $email = new \SendGrid\Mail\Mail();

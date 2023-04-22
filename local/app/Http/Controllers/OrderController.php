@@ -5272,7 +5272,7 @@ $HTML .= '
     $user = auth()->user();
     $userRoles = $user->getRoleNames();
     $user_role = $userRoles[0];
-    if ($user_role == 'Admin' || $user_role == 'SalesHead' || Auth::user()->id == '147' || Auth::user()->id == '85' ||  Auth::user()->id == '88' ||  Auth::user()->id == '89' || Auth::user()->id == '196' || Auth::user()->id==185 || Auth::user()->id==212 || Auth::user()->id==219 || Auth::user()->id==233 || Auth::user()->id==249) {
+    if ($user_role == 'Admin' || $user_role == 'SalesHead' || Auth::user()->id == '147' || Auth::user()->id == '85' ||  Auth::user()->id == '88' ||  Auth::user()->id == '89' || Auth::user()->id == '196' || Auth::user()->id==185 || Auth::user()->id==212 || Auth::user()->id==219 || Auth::user()->id==233 || Auth::user()->id==253) {
       return $theme->scope('orders.v1.orderListAdminView', $data)->render();
     }
     if ($user_role == 'Staff') {

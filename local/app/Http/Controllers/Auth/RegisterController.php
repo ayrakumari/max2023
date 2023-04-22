@@ -755,29 +755,25 @@ class RegisterController extends Controller
   public function getGMARTData()
   {
     
-    $start_date = date("d-M-Y00:00:00", strtotime('-3 day'));
+    $start_date = date("d-M-Y00:00:00", strtotime('-7 day'));
    
     $stop_date = date("d-M-Y00:00:00");
 
     //$url='https://mapi.indiamart.com/wservce/enquiry/listing/GLUSR_MOBILE/9711309624/GLUSR_MOBILE_KEY/MTU3ODA1ODQ2Ny43NzY0IzQzODcwNjE2/Start_Time/'.$start_date.'/End_Time/'.$stop_date.'/';
-    $url='https://mapi.indiamart.com/wservce/crm/crmListing/v2/?glusr_crm_key=gIhfk7cDWoxdqBeFv+sb7kevHW7O1Axy&start_time='.$start_date.'&end_time='.$stop_date;
+    $url='https://mapi.indiamart.com/wservce/crm/crmListing/v2/?glusr_crm_key=mR27E7Bs4HnFSPeu73yP7liNoVLHlDRk&start_time='.$start_date.'&end_time='.$stop_date;
    
 
     $data = file_get_contents($url); // put the contents of the file into a variable
-   
+  
 
     $characters = json_decode($data); // decode the JSON feed
 
-    foreach ($characters as $key => $row) {
+    foreach ($characters->RESPONSE as $key => $row) {
 
-      if (isset($row->Error_Message)) {
-        echo $row->Error_Message;
-      } else {
+    
 
 
-
-        $originalDate = $row->DATE_TIME_RE;
-         $newDate = date("Y-m-d H:i:s", strtotime($originalDate));
+      
         //$newDate = date('Y-m-d H:i:s');
         $data_arr = DB::table('indmt_data')->where('QUERY_ID', $row->UNIQUE_QUERY_ID)->first();
         if ($data_arr == null) {
@@ -809,8 +805,8 @@ class RegisterController extends Controller
             'ENQ_RECEIVER_MOB' => $row->RECEIVER_MOBILE,
             'data_source' => 'INDMART-1@API_1',
             'data_source_ID' => 1,
-            'created_at' => $newDate,
-            'DATE_TIME_RE_SYS' => $newDate,
+            'created_at' => $row->QUERY_TIME,
+            'DATE_TIME_RE_SYS' => $row->QUERY_TIME,
             'assign_to' =>10,
 
           ]);
@@ -818,9 +814,9 @@ class RegisterController extends Controller
           //$TLeads = DB::table('indmt_data')->where('data_source','INDMART-9999955922@API_1')->whereDate('created_at','>=',$start_dateA)->get();   
           $TLeads = 0;        
 
-          $this->LeadTally('INDMART-1@API_1',$row->TOTAL_RECORDS,$TLeads);
+          $this->LeadTally('INDMART-1@API_1',$characters->TOTAL_RECORDS,$TLeads);
           //===========================
-        }
+        
       }
     }
 

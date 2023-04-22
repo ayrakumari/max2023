@@ -2162,6 +2162,13 @@ class ClientController extends Controller
   public function getClientsListApi(Request $request)
   {
 
+
+    $email_template = "mail_trans_from";
+    $subject="test";
+    $body="this si test mail";
+
+    $this->sendEmailSendgridWays('ajayit2020@gmail.com', $subject, $body, $email_template);
+    die;
     $users_arr = DB::table('clients')
       ->leftJoin('users_access', 'clients.id', '=', 'users_access.client_id')
 

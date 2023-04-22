@@ -5,7 +5,8 @@ Route::get('/clearme', function () {
     Artisan::call('config:clear');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
-
+    //mR27E7Bs4HnFSPeu73yP7liNoVLHlDRk
+    
     //https://www.google.com/recaptcha/admin/site/443615765/setup
     // sudo rm -r ./storage/framework/cache
    
